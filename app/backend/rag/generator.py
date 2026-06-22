@@ -82,10 +82,8 @@ def generar_politica(contexto: dict, brechas: list[dict], fuentes: list[dict],
             [{"role": "user", "content": _prompt_usuario(contexto, brechas, fuentes)}],
             system=SYSTEM, max_tokens=8000, temperature=0.2, model=model,
         )
-    except Exception as e:  # red caída, cuota, etc. -> demo sigue
-        out = _fallback(contexto, brechas, fuentes)
-        out["error"] = str(e)
-        return out
+    except Exception:  # red caída, cuota, etc. -> demo sigue con plantilla
+        return _fallback(contexto, brechas, fuentes)
 
     texto = _limpiar_salida(texto)
 

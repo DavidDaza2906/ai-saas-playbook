@@ -137,10 +137,8 @@ def verificar(texto: str, fuentes: list[dict], model: str | None = None) -> dict
                                system=SYSTEM, max_tokens=8000, temperature=0.1,
                                model=modelo)
         data = _extraer_json(resp)
-    except Exception as e:
-        out = _heuristica(texto, fuentes)
-        out["error"] = str(e)
-        return out
+    except Exception:
+        return _heuristica(texto, fuentes)
 
     claims = data.get("claims", [])
     n = len(claims)

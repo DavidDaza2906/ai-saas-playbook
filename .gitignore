@@ -41,9 +41,11 @@ CONTEXTO/
 *.bk
 *.txt
 session.md
+session-*.md
 PROPUESTA_01.md
 PROPUESTA.md.bak
 notas.txt
 ideas2.txt
 orden.txt
 LA IDEA DEL PROYECTO.txt
+SNAPSHOT.md
