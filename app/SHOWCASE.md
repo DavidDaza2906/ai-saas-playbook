@@ -28,7 +28,7 @@ cd app/frontend && npm run dev
 
 ### 1. Wizard — botón "Cargar caso demo (POC)" (1 min)
 - **Mostrar:** asistente de 4 pasos (contexto → bifurcación → árbol → resultados).
-- **Caso POC:** PYME de comercio en Colombia, ruta C (productos + procesos internos), 3 sistemas de IA, uno de alto riesgo (preselección de hojas de vida).
+- **Caso POC:** PYME de comercio, ruta C (productos + procesos internos), 3 sistemas de IA, uno de alto riesgo (preselección de hojas de vida).
 - **Puntos clave:**
   - Árbol de 34 preguntas (15 base + 19 subpreguntas condicionales).
   - Tipos de pregunta: opción múltiple, escala Likert, **numérico** (¿cuántos sistemas?), **matriz** (clasificar riesgo por sistema), texto abierto.
@@ -47,7 +47,7 @@ cd app/frontend && npm run dev
 - **Acción:** clic "Generar política con RAG" (toma ~1-2 min, hay spinner).
 - **Mostrar mientras carga:** "Retrieval híbrido + LLM + verificación de faithfulness".
 - **Puntos clave al terminar:**
-  - **Política de IA generada** a la medida (~3500 chars), con **citas resaltadas** (ISO 42001, Ley 1581, CONPES 4144).
+  - **Política de IA generada** a la medida (~3500 chars), con **citas resaltadas** (ISO 42001, NIST AI RMF).
   - **Fuentes normativas recuperadas** (6 chunks con score de rerank).
   - **Verificación de citas (2ª capa):** "✓ Todas las citas son válidas" — 0 inválidas.
   - **Faithfulness LLM-as-judge (3ª capa):** score 0.83, 18 afirmaciones, 15 faithful, 1 unfaithful detectada. Expandir para mostrar la afirmación no respaldada con su explicación.
@@ -60,41 +60,28 @@ cd app/frontend && npm run dev
   - **Constancia verificable (3.6):** registro con fecha, organización, qué se evaluó/encontró/generó, marco normativo. Botón "Descargar .md".
 - **Narrativa:** "El SaaS **produce, no solo aconseja**. La constancia es un activo comercial y regulatorio que la PYME puede presentar a clientes y auditorías para demostrar credibilidad en su uso de IA."
 
-### 5. Cierre — métricas para el paper (30s)
-> "Evaluación RAGAS sobre 10 consultas-oro: **recall@6 = 0.85**, **precisión de citas = 1.0** (cero inválidas), **faithfulness = 0.884**. 360 tests unitarios + de coherencia. Las 3 capas anti-alucinación detectan 13 afirmaciones no respaldadas en el golden set."
+### 5. Cierre — robustez del diseño (30s)
+> "360 tests unitarios + de coherencia verifican el motor determinista. El RAG combina retrieval híbrido con validación determinista de citas y faithfulness LLM-as-judge. Las métricas RAGAS se regenerarán con el corpus universal en la siguiente versión del paper."
 
 ---
 
-## Métricas para el paper (anexo)
+## Robustez del diseño (anexo)
 
 ### 3 capas de defensa anti-alucinación (modelo queso suizo de Hendrycks)
 
-| Capa | Mecanismo | Métrica | Resultado |
-|------|-----------|---------|-----------|
-| **1. Retrieval + umbral** | Híbrido estructurado + BM25 + Voyage densa + RRF + rerank, abstención <0.35 | Recall@6 | **0.85** (min 0.5, max 1.0) |
-| **2. Validación de citas** | Regex contra índice corpus + controls.json | Precisión de citas | **1.0** (0 inválidas / 10 políticas) |
-| **3. Faithfulness LLM-as-judge** | 2ª llamada LLM verifica entailment de cada afirmación | Faithfulness score | **0.884** (min 0.684, max 1.0, n=10) |
-
-### Detalle por consulta (golden set, n=10)
-
-| ID | Tema | Recall@6 | Prec. citas | Faithfulness | Claims | Faithful | Unfaithful |
-|---|---|---|---|---|---|---|---|
-| g1 | supervisión humana | 1.00 | 1.00 | 0.833 | 12 | 10 | 1 |
-| g2 | datos personales / consentimiento | 0.50 | 1.00 | 0.875 | 16 | 14 | 1 |
-| g3 | gobernanza de datos | 0.50 | 1.00 | 0.950 | 20 | 19 | 0 |
-| g4 | política de IA | 1.00 | 1.00 | 0.708 | 24 | 17 | 5 |
-| g5 | roles y responsabilidades | 1.00 | 1.00 | 1.000 | 18 | 18 | 0 |
-| g6 | evaluación de impacto / sesgo | 1.00 | 1.00 | 0.955 | 22 | 21 | 0 |
-| g7 | transparencia / comunicación | 1.00 | 1.00 | 0.684 | 19 | 13 | 5 |
-| g8 | IA de terceros / proveedores | 1.00 | 1.00 | 0.917 | 12 | 11 | 0 |
-| g9 | incidentes / respuesta a fallas | 0.50 | 1.00 | 1.000 | 18 | 18 | 0 |
-| g10 | beneficencia / impacto positivo | 1.00 | 1.00 | 0.913 | 23 | 21 | 1 |
-| **Media** | | **0.85** | **1.0** | **0.884** | | | 13 total |
+| Capa | Mecanismo |
+|------|-----------|
+| **1. Retrieval + umbral** | Híbrido estructurado + BM25 + Voyage densa + RRF + rerank, abstención <0.35 |
+| **2. Validación de citas** | Regex contra índice corpus + controls.json |
+| **3. Faithfulness LLM-as-judge** | 2ª llamada LLM verifica entailment de cada afirmación |
 
 ### Suite de tests
-- **360 tests** (motor + API + coherencia + regresión), **0.53s**, sin red.
+- **360 tests** (motor + API + coherencia + regresión), **~1s**, sin red.
 - 300 casos aleatorios × 9 invariantes = 2,700 checks, 0 incoherencias.
 - Invariantes: bounded [0,100], severidad válida, gap_register ordenado, recs priorizadas, monotonicidad (mejorar respuestas nunca baja el score), reproducibilidad.
+
+### Métricas RAGAS
+> Pendientes de regeneración con el corpus normativo universal (NIST + ISO 42001 + principios éticos UNESCO/OCDE).
 
 ---
 
@@ -106,7 +93,7 @@ cd app/frontend && npm run dev
 | Voyage rate-limita (3 RPM) | Retrieval degrada a BM25+estructurado automáticamente (sigue funcionando, sin capa semántica) |
 | Política tarda mucho (>2 min) | El frontend muestra spinner; si timeout, mostrar fallback plantilla |
 | Frontend no renderiza Plotly | Mostrar capturas estáticas o el JSON del diagnóstico vía `/api/diagnose` |
-| Sin internet (keys no llegan) | Modo degradado: política de plantilla + retrieval BM25, demo sigue |
+| Sin internet / OpenCode sin créditos | Modo degradado: política de plantilla + retrieval BM25, demo sigue |
 
 ---
 

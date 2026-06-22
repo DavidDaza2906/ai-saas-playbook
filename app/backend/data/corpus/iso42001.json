@@ -47,7 +47,7 @@
     "id_control": "A.7.2",
     "funcion_nist": "MANAGE",
     "eje": "LEGAL",
-    "texto": "La organización debe gestionar los datos usados en el sistema de IA: origen, calidad, procedencia, preparación y cumplimiento de requisitos legales de privacidad. Se conecta directamente con la Ley 1581/2012 en el contexto colombiano."
+    "texto": "La organización debe gestionar los datos usados en el sistema de IA: origen, calidad, procedencia, preparación y cumplimiento de requisitos legales de privacidad del país de operación."
   },
   {
     "id": "iso-A.9.2",

@@ -28,7 +28,6 @@ El acceso a este material implica el compromiso de mantener su confidencialidad 
 - [Uso](#uso)
 - [Endpoints de la API](#endpoints-de-la-api)
 - [Tests](#tests)
-- [Métricas RAGAS (paper)](#métricas-ragas-paper)
 - [Estructura del proyecto](#estructura-del-proyecto)
 - [Documentación](#documentación)
 
@@ -148,7 +147,7 @@ Abrir **http://localhost:5173**
 1. Clic en **"Cargar caso demo (POC)"** — precarga una PYME de comercio con 3 sistemas de IA
 2. Ver el diagnóstico: vector 3D, radares NIST/ISO/ética, gap register
 3. Al final del informe, elegir "Necesito ayuda para implementar" → desbloquea política + artefactos
-4. Generar política con RAG (~1-2 min) — ver citas + sello de verificación
+4. Generar política con RAG (~1-2 min) — ver citas ISO/NIST + sello de verificación
 5. Generar artefactos — plan accionable + constancia verificable (descargables)
 6. Descargar informe PDF completo
 
@@ -193,23 +192,7 @@ cd app/backend
 
 ---
 
-## Métricas RAGAS (paper)
 
-Evaluación sobre 10 consultas-oro (`data/golden_set.json`):
-
-| Métrica | Resultado | Qué mide |
-|---------|-----------|----------|
-| **Recall@6** | 0.85 | % de fuentes esperadas recuperadas |
-| **Precisión de citas** | 1.0 | 0 citas inválidas (2ª capa) |
-| **Faithfulness** | 0.884 | % afirmaciones respaldadas por fuentes (3ª capa) |
-
-```bash
-cd app/backend
-.venv/bin/python eval_harness.py --con-faithfulness --report
-# Resultado: data/eval_report.md + data/eval_result.json
-```
-
----
 
 ## Estructura del proyecto
 
@@ -235,10 +218,7 @@ ai-saas-playbook/
 │   │   │   ├── questions.json        # árbol (15 base + 19 subpreguntas, pesos congelados)
 │   │   │   ├── controls.json         # controles ISO 42001 + principios éticos
 │   │   │   ├── recommendations.json  # lookup brecha → recomendación
-│   │   │   ├── corpus/               # chunks normativos con metadatos
-│   │   │   ├── golden_set.json       # 10 consultas-oro para evaluación
-│   │   │   ├── eval_result.json      # resultados del harness
-│   │   │   ├── eval_report.md        # reporte de métricas
+│   │   │   ├── corpus/               # chunks normativos universales con metadatos
 │   │   │   └── SCHEMA_PREGUNTAS.md   # contrato del árbol
 │   │   └── tests/
 │   │       ├── test_engine.py        # tests del motor

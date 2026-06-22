@@ -30,7 +30,8 @@ DATA = Path(__file__).parent / "data"
 
 # Fuentes ligadas a un país (paquete nacional). El resto es universal (pais=None):
 # NIST, ISO 42001, y los 5 principios éticos consolidados (UNESCO + OCDE).
-PAIS_POR_FUENTE = {"constitucion": "CO", "ley1581": "CO", "conpes4144": "CO"}
+# Actualmente vacío: el sistema opera con corpus normativo universal.
+PAIS_POR_FUENTE = {}
 
 PRINCIPIOS = ["beneficencia", "no_maleficencia", "autonomia", "justicia", "explicabilidad"]
 FUNCIONES_NIST = ["GOVERN", "MAP", "MEASURE", "MANAGE"]
@@ -478,10 +479,11 @@ def _nivel_verificabilidad(con_evidencia: int, total: int) -> str:
 
 def recomendar(gap_register: list[dict], pais: str | None = "CO") -> list[dict]:
     """Hoja de ruta priorizada por reducción de riesgo vs. esfuerzo, con
-    justificación normativa (output 2.3) anclada en la Constitución del país."""
+    justificación normativa (output 2.3) anclada en los marcos universales
+    (ISO 42001, NIST AI RMF y principios éticos UNESCO/OCDE)."""
     data = load_data()
     rec_index = {r["id_control"]: r for r in data["recommendations"]}
-    fundamentos = _fundamentos_constitucionales(data, pais)
+    fundamentos = _fundamentos_pais(data, pais)
 
     salida = []
     for gap in gap_register:
@@ -498,7 +500,7 @@ def recomendar(gap_register: list[dict], pais: str | None = "CO") -> list[dict]:
             "prioridad": round(riesgo / esfuerzo, 2),
             "plano": {"x_esfuerzo": esfuerzo, "y_riesgo": riesgo},
             "justificacion": {                       # output 2.3
-                "fundamento_constitucional": fundamentos,
+                "fundamento_pais": fundamentos,
                 "principios_eticos": gap.get("principios", []),
                 "control_iso": gap["id_control"],
                 "funcion_nist": rec.get("nist"),
@@ -508,7 +510,7 @@ def recomendar(gap_register: list[dict], pais: str | None = "CO") -> list[dict]:
     return salida
 
 
-def _fundamentos_constitucionales(data: dict, pais: str | None) -> list[str]:
+def _fundamentos_pais(data: dict, pais: str | None) -> list[str]:
     if not pais:
         return []
     return [c["referencia_legal"] for c in data["corpus"]

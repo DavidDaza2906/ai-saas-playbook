@@ -3,7 +3,7 @@ import { FileText, Download, BookOpen, CheckCircle2, AlertTriangle } from 'lucid
 import type { PolicyResponse } from '../types'
 
 const CITA_RE =
-  /(ISO\s+42001(?:\s+A\.\d+(?:\.\d+)*)?|Ley\s+\d{3,5}(?:\s+(?:art\.?|artículo)\s*\d+)?|CONPES\s+\d+|Decreto\s+\d+(?:\s+(?:art\.?|artículo)\s*\d+)?|Resolución\s+\d+|NIST\s+AI\s+RMF(?:\s+\d+\.\d+\.\d+)?|\bart\.?\s*\d+|\bartículo\s+\d+)/gi
+  /(ISO\s+42001(?:\s+A\.\d+(?:\.\d+)*)?|NIST\s+AI\s+RMF(?:\s+\d+\.\d+)?|\bGOVERN\b|\bMAP\b|\bMEASURE\b|\bMANAGE\b)/gi
 
 function resaltarCitas(texto: string): ReactNode[] {
   const nodos: ReactNode[] = []

@@ -416,27 +416,24 @@ def test_recs_cubren_gaps_con_control_destino():
         f"recs con controles no en gaps: {rec_controls - gap_controls}"
 
 
-def test_recs_incluyen_justificacion_constitucional():
-    """Recomendaciones con país=CO incluyen fundamento constitucional."""
+def test_recs_sin_fundamento_pais_con_pais():
+    """Sin corpus nacional, recomendaciones con país declarado no incluyen fundamento de país."""
     bif, resp = _caso_aleatorio(99)
     d = diagnosticar(bif, resp)
     recs = recomendar(d["gap_register"], pais="CO")
     for r in recs:
-        fund = r["justificacion"].get("fundamento_constitucional", [])
-        # si hay gaps y país CO, suele haber fundamento (constitución CO está en corpus)
-        if d["gap_register"]:
-            # al menos algunas recs deben tener fundamento
-            pass  # no asserts estrictos porque puede no haber fuentes CO para todos
+        assert r["justificacion"]["fundamento_pais"] == [], \
+            f"hay fundamento de país sin corpus nacional: {r['justificacion']['fundamento_pais']}"
 
 
-def test_recs_sin_pais_sin_fundamento_constitucional():
-    """Sin país (pais=None) → sin fundamento constitucional."""
+def test_recs_sin_pais_sin_fundamento_pais():
+    """Sin país (pais=None) → sin fundamento de país."""
     bif, resp = _caso_aleatorio(13)
     d = diagnosticar(bif, resp)
     recs = recomendar(d["gap_register"], pais=None)
     for r in recs:
-        assert r["justificacion"]["fundamento_constitucional"] == [], \
-            f"sin país pero hay fundamento: {r['justificacion']['fundamento_constitucional']}"
+        assert r["justificacion"]["fundamento_pais"] == [], \
+            f"sin país pero hay fundamento: {r['justificacion']['fundamento_pais']}"
 
 
 # ---------------------------------------------------------------------------

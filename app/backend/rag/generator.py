@@ -102,7 +102,8 @@ def _fallback(contexto: dict, brechas: list[dict], fuentes: list[dict]) -> dict:
 
 1. OBJETIVO Y ALCANCE
 Esta política establece el compromiso de la organización ({contexto.get('descripcion','')})
-con el uso responsable, ético y conforme a la ley de los sistemas de inteligencia artificial.
+con el uso responsable, ético y conforme a la normativa aplicable de protección de datos
+y derechos fundamentales en el uso de sistemas de inteligencia artificial.
 
 2. PRINCIPIOS
 La organización adopta los 5 principios consolidados (UNESCO/OCDE): beneficencia,
@@ -114,12 +115,12 @@ política (ISO 42001 A.3.2).
 
 4. REGLAS DE USO Y SUPERVISIÓN HUMANA
 Toda decisión de IA que afecte a personas será revisada por una persona antes de surtir
-efecto (ISO 42001 A.9.2; Constitución art. 13 y art. 29).
+efecto (ISO 42001 A.9.2; NIST AI RMF GOVERN y MANAGE).
 
 5. DATOS PERSONALES
 El tratamiento de datos personales requiere autorización previa, expresa e informada del
-titular, conforme a la normativa aplicable (Ley 1581 de 2012 art. 9 en Colombia) y al
-habeas data (Constitución art. 15).
+titular, conforme a la normativa aplicable de protección de datos del país de operación,
+y a los principios de autonomía y no maleficencia del marco ético adoptado.
 
 6. REVISIÓN
 Esta política se revisará periódicamente y ante cambios significativos en los sistemas de IA.

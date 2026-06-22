@@ -1,5 +1,5 @@
 # Guía para la Creación de un RAG Confiable
-> Versión adaptada al proyecto: SaaS de autodiagnóstico de IA responsable para PYMES (corpus normativo: NIST AI RMF, ISO 42001, Constitución Política de Colombia, CONPES 4144, Ley 1581). Stack: Python + Voyage (embeddings) + Claude Opus 4.8 (generación).
+> Versión adaptada al proyecto: SaaS de autodiagnóstico de IA responsable para PYMES (corpus normativo universal: NIST AI RMF, ISO 42001 y los 5 principios éticos consolidados UNESCO/OCDE). Stack: Python + Voyage (embeddings) + OpenCode API glm-5.2 (generación).
 
 Para construir un sistema RAG (Generación Aumentada por Recuperación) robusto y preciso no basta con conectar un LLM a una base de datos. Se requiere diseño meticuloso en cada etapa del pipeline para evitar alucinaciones y asegurar que las respuestas se basen estrictamente en la información proporcionada.
 
@@ -13,7 +13,7 @@ La calidad del sistema es directamente proporcional a la de los datos (GIGO: Gar
 
 - **Limpieza profunda:** preparar y limpiar los datos antes de indexarlos suele ser el paso que más tiempo consume en proyectos reales.
 - **Extracción de metadatos:** al cargar documentos (PDF, DOCX, etc.) se extraen título, número de página/artículo, autor, categoría. Los metadatos permiten filtrar y restringen el espacio de consulta, mejorando drásticamente la precisión.
-- **Metadatos como espinazo determinista (clave en este proyecto):** cada chunk se etiqueta con `fuente`, `id_control` (ej. ISO 42001 A.5), `funcion_nist` (GOVERN/MAP/MEASURE/MANAGE) y `referencia_legal` (ej. art. 15 Constitución, art. 9 Ley 1581). Como cada pregunta del árbol ya viene mapeada a una función NIST / control ISO, gran parte de la recuperación es un **filtro por metadato exacto**, no una búsqueda difusa. Esto es determinista y 100% citable.
+- **Metadatos como espinazo determinista (clave en este proyecto):** cada chunk se etiqueta con `fuente`, `id_control` (ej. ISO 42001 A.5), `funcion_nist` (GOVERN/MAP/MEASURE/MANAGE) y `referencia_legal` (ej. ISO 42001 A.9.2, NIST AI RMF 1.0 GOVERN). Como cada pregunta del árbol ya viene mapeada a una función NIST / control ISO, gran parte de la recuperación es un **filtro por metadato exacto**, no una búsqueda difusa. Esto es determinista y 100% citable.
 
 ## 2. Estrategia de Fragmentación (Chunking)
 Indexar documentos completos diluye la señal con ruido.
@@ -48,9 +48,9 @@ La confiabilidad depende de qué tan estrictas sean las instrucciones.
 ## 5. Verificación y Guardrails (el diferenciador AI-safety)
 Capas de defensa que revisan la salida del LLM antes de entregarla.
 
-- **Validación de citas contra el índice (determinista):** todo artículo/control citado debe **existir realmente en el corpus**. Si el modelo inventa "Artículo 47 de la Ley 1581" inexistente → se rechaza automáticamente. Barato, determinista y muy convincente.
+- **Validación de citas contra el índice (determinista):** todo control ISO o función NIST citado debe **existir realmente en el corpus**. Si el modelo inventa "ISO 42001 A.99" o "NIST AI RMF 9.9" inexistente → se rechaza automáticamente. Barato, determinista y muy convincente.
 - **Verificador de faithfulness (LLM-as-judge):** una segunda llamada comprueba que cada afirmación generada está *entailed* por las fuentes citadas (groundedness, métrica de faithfulness de RAGAS). Si no se sostiene → se marca o elimina. Es, técnicamente, una salvaguarda de seguridad de IA.
-- **Guardrails de formato/PII:** validar esquema de salida; los documentos que sube el usuario se procesan solo en sesión (consentimiento previo, Ley 1581).
+- **Guardrails de formato/PII:** validar esquema de salida; los documentos que sube el usuario se procesan solo en sesión (consentimiento previo, conforme a la normativa de protección de datos aplicable).
 
 ## 6. Evaluación (Confiabilidad Continua)
 - **Ajuste de hiperparámetros:** no adivines `chunk_size` ni `K`; prueba combinaciones sobre tu data específica.

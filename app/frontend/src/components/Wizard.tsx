@@ -5,7 +5,8 @@ import { diagnose, getQuestions } from '../api'
 import type { ArbolPreguntas, DiagnoseResponse, Pregunta, Subpregunta, ValorRespuesta } from '../types'
 
 const PAISES = [
-  { valor: 'CO', etiqueta: 'Colombia', activo: true },
+  { valor: '', etiqueta: 'Global (marcos universales)', activo: true },
+  { valor: 'CO', etiqueta: 'Colombia', activo: false },
   { valor: 'MX', etiqueta: 'México', activo: false },
   { valor: 'AR', etiqueta: 'Argentina', activo: false },
   { valor: 'BR', etiqueta: 'Brasil', activo: false },
@@ -202,7 +203,7 @@ export function Wizard({ onComplete, onCargarPOC }: {
       {!cargandoArbol && !errorCarga && arbol && paso === 0 && (
         <div className="bg-white rounded-xl border p-6">
           <h2 className="text-lg font-semibold mb-1">Contexto de la organización</h2>
-          <p className="text-sm text-slate-600 mb-6">Dinos dónde operas para cargar las fuentes normativas aplicables.</p>
+          <p className="text-sm text-slate-600 mb-6">El diagnóstico usa marcos universales (NIST AI RMF, ISO 42001 y principios éticos UNESCO/OCDE). El país es opcional y solo afecta metadatos.</p>
 
           <div className="space-y-5">
             <div>
@@ -241,10 +242,10 @@ export function Wizard({ onComplete, onCargarPOC }: {
           </div>
 
           <div className="mt-6 flex items-center justify-between">
-            <p className="text-xs text-slate-500">El sistema cargará las fuentes normativas del país seleccionado.</p>
+            <p className="text-xs text-slate-500">Marco normativo universal activo para cualquier jurisdicción.</p>
             <button
               onClick={() => setPaso(1)}
-              disabled={!pais || !sector}
+              disabled={!sector}
               className="inline-flex items-center gap-1.5 bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium disabled:opacity-40 hover:bg-indigo-700 transition"
             >
               Siguiente <ChevronRight className="w-4 h-4" />

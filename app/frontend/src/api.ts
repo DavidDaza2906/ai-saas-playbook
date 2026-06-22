@@ -36,7 +36,7 @@ export interface DiagnosePayload {
 }
 
 export async function diagnose(payload: DiagnosePayload): Promise<DiagnoseResponse> {
-  return postJson('/diagnose', { ...payload, evidencias: payload.evidencias || [], pais: payload.pais ?? 'CO' })
+  return postJson('/diagnose', { ...payload, evidencias: payload.evidencias || [], pais: payload.pais ?? null })
 }
 
 export interface PolicyPayload {
@@ -48,7 +48,7 @@ export interface PolicyPayload {
 }
 
 export async function generatePolicy(payload: PolicyPayload): Promise<PolicyResponse> {
-  return postJson('/policy', { ...payload, faithfulness: payload.faithfulness ?? false, pais: payload.pais ?? 'CO' })
+  return postJson('/policy', { ...payload, faithfulness: payload.faithfulness ?? false, pais: payload.pais ?? null })
 }
 
 export interface ArtifactsPayload extends DiagnosePayload {
@@ -61,7 +61,7 @@ export async function getArtifacts(payload: ArtifactsPayload): Promise<Artifacts
   return postJson('/artifacts', {
     ...payload,
     evidencias: payload.evidencias || [],
-    pais: payload.pais ?? 'CO',
+    pais: payload.pais ?? null,
     generar_politica: payload.generar_politica ?? false,
     faithfulness: payload.faithfulness ?? false,
   })
@@ -70,7 +70,7 @@ export async function getArtifacts(payload: ArtifactsPayload): Promise<Artifacts
 // Caso POC precargado para demo rápida (PYME comercio, ruta C, 3 sistemas, uno alto riesgo)
 export const CASO_POC: DiagnosePayload = {
   bifurcacion: '3',
-  pais: 'CO',
+  pais: null,
   sector: 'Comercio/Retail',
   respuestas: {
     q1: 'parcial', q2: ['c'], q2a: 'parcial',

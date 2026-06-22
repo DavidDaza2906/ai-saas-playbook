@@ -9,11 +9,11 @@ Backend funcional con RAG completo (3 capas anti-alucinación + métricas RAGAS 
 
 ## Decisiones de diseño tomadas (no relitigar)
 - **Fuente de verdad:** `PROPUESTAFINAL.md`.
-- **Marco ético:** 5 principios consolidados (Beneficencia, No maleficencia, Autonomía, Justicia, Explicabilidad) desde UNESCO + OCDE (Floridi). CONPES/Ley 1581/Constitución CO = paquete país, no núcleo.
+- **Marco ético:** 5 principios consolidados (Beneficencia, No maleficencia, Autonomía, Justicia, Explicabilidad) desde UNESCO + OCDE (Floridi). Corpus normativo universal: NIST AI RMF, ISO 42001 y principios éticos consolidados.
 - **Ejes del diagnóstico:** **ÉTICO, NIST, ISO** (se eliminaron LEGAL y RESPONSABILIDAD como ejes; responsabilidad queda cubierta por NIST GOVERN + Explicabilidad). Se derivan del `mapeo` de cada pregunta (sin campo `eje`). El diagnóstico emite un **vector (x=ÉTICO, y=ISO, z=NIST)**, cada eje 0–100, para un **diagnóstico visual en espacio 3D**. Tablas de ejes de `PROPUESTAFINAL.md` y `SaaS.md` ya actualizadas a ÉTICO/NIST/ISO.
 - **Scoring del vector:** promedio **ponderado** por eje, `eje = 100·Σ(aᵢ·wᵢ)/Σwᵢ`, normalizado sobre las preguntas efectivamente puntuadas (maneja ramas y "na"). Pesos `wᵢ` por eje: fijos en `pesos` o derivados del `mapeo` (binario) si faltan.
 - **Pesos vía RAG, congelados:** se corren UNA vez con `propose_weights.py` (RAG propone los 60 pesos con justificación) → el equipo revisa y congela en `questions.json`. Runtime = determinista. El RAG no participa en cada sesión, solo en diseño.
-- **Alcance demo:** país instanciado = Colombia.
+- **Alcance demo:** marco normativo universal, sin paquete país activo.
 - **Evidencia documental:** voluntaria (coherente con §6.3).
 - **Principio rector:** el motor (reglas) decide; el RAG/LLM redacta. La lógica con consecuencia legal es determinista y auditable.
 - **Stack:** backend Python + FastAPI; RAG = retrieval híbrido (estructurado + BM25 + denso Voyage + RRF + rerank + umbral abstención) + **API de OpenCode (glm-5.2)** para generación + verificador de citas. Frontend = Vite/React (pendiente).
@@ -47,7 +47,7 @@ Backend funcional con RAG completo (3 capas anti-alucinación + métricas RAGAS 
 ### Backend — núcleo determinista
 - [x] Motor de diagnóstico (Capa 1) data-driven, sin IDs cableados
 - [x] Motor de recomendaciones (Capa 2) por lookup + priorización
-- [x] Carga de fuentes por país (universal + paquete nacional)
+- [x] Carga de corpus universal (NIST + ISO 42001 + principios éticos UNESCO/OCDE)
 - [x] Validador de preguntas (`validate_questions.py`)
 - [x] Caso POC ejecutable (`poc.py`)
 - [x] **Suite de tests** (`tests/test_engine.py` + `tests/test_api.py`): 23 tests, 0.29s, sin red
@@ -69,7 +69,6 @@ Backend funcional con RAG completo (3 capas anti-alucinación + métricas RAGAS 
 
 ### Datos / corpus
 - [x] Corpus universal: NIST, ISO 42001, 5 principios éticos (UNESCO/OCDE)
-- [x] Paquete Colombia: Constitución, Ley 1581, CONPES 4144
 - [x] Controles NIST/ISO + registro de principios (`controls.json`) — ampliado con A.5.1, A.5.3, A.8.5, A.10.3 y descripciones alineadas al árbol
 - [x] Tabla de recomendaciones (`recommendations.json`) — 13 recs cubriendo todos los controles usados
 - [x] **Árbol real cargado** (`questions.json`): 15 preguntas base + 19 subpreguntas, siguiendo `ARBOL_PREGUNTAS.md`

@@ -62,7 +62,7 @@
   {
     "id_control": "A.6.2",
     "brecha": "Datos personales o sensibles sin gobernanza ni autorización",
-    "recomendacion": "Documentar el consentimiento de los titulares conforme a la normativa aplicable (Ley 1581/2012 en Colombia) y registrar qué datos se usan, con qué propósito y cómo se protegen. Aplica a datos de clientes y de empleados.",
+    "recomendacion": "Documentar el consentimiento de los titulares conforme a la normativa aplicable de protección de datos del país de operación y registrar qué datos se usan, con qué propósito y cómo se protegen. Aplica a datos de clientes y de empleados.",
     "nist": "GOVERN",
     "esfuerzo": "medio",
     "fase": "0-30",

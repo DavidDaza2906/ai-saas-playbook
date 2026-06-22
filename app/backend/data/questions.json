@@ -507,7 +507,7 @@
     {
       "id": "q6",
       "texto": "¿Su organización está utilizando datos personales en cualquiera de sus sistemas de IA? (nombre, email, género, edad, datos de desempeño, historial de crédito, información médica, ubicación, hábitos de compra, etc.)",
-      "contexto_pyme": "Aplica a cualquier información que pueda identificar a una persona. Es obligatorio bajo la normativa de protección de datos del país (Ley 1581/2012 en Colombia).",
+      "contexto_pyme": "Aplica a cualquier información que pueda identificar a una persona. Es obligatorio bajo la normativa de protección de datos del país de operación.",
       "tipo": "multiple",
       "ramas": [
         "1",

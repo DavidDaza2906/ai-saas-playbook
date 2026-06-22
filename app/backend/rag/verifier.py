@@ -1,11 +1,10 @@
 """
 Guardrail determinista: validación de citas contra el índice del corpus.
 
-Toda referencia normativa que el LLM mencione (artículos, controles ISO,
-CONPES, leyes) debe existir realmente en el corpus o en las fuentes que se le
-pasaron. Si inventa una cita ("Artículo 47 de la Ley 1581" inexistente), se
-detecta y se marca. Barato, determinista, y la tercera capa de defensa
-anti-alucinación (ver RAG.md §5 y §9).
+Toda referencia normativa que el LLM mencione (controles ISO, funciones NIST)
+debe existir realmente en el corpus o en las fuentes que se le pasaron. Si
+inventa una cita ("ISO 42001 A.99" inexistente), se detecta y se marca. Barato,
+determinista, y la segunda capa de defensa anti-alucinación.
 """
 
 from __future__ import annotations
@@ -16,11 +15,9 @@ from functools import lru_cache
 from engine import load_data
 
 _PATRONES = [
-    re.compile(r"art[íi]culo\s+\d+", re.IGNORECASE),
-    re.compile(r"\bart\.\s*\d+", re.IGNORECASE),
-    re.compile(r"\bA\.\d+\.\d+\b"),                 # controles ISO
-    re.compile(r"ley\s+1581", re.IGNORECASE),
-    re.compile(r"conpes\s+4144", re.IGNORECASE),
+    re.compile(r"\bA\.\d+(?:\.\d+)?\b"),              # controles ISO (A.3.2, A.9.2, A.10.3)
+    re.compile(r"NIST\s+AI\s+RMF(?:\s+\d+\.\d+)?", re.IGNORECASE),
+    re.compile(r"\b(GOVERN|MAP|MEASURE|MANAGE)\b"),   # funciones NIST
 ]
 
 

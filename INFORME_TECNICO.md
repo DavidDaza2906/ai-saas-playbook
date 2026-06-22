@@ -107,7 +107,7 @@ Los pesos finos son los que separan las coordenadas y les dan significado (con p
 
 Determinista por lookup: cada brecha en el gap register se busca en `recommendations.json` (tabla curada brecha → recomendación por control ISO). Una brecha sin control de destino no genera recomendación (cumple `PROPUESTAFINAL §149`).
 
-**Priorización:** `prioridad = severidad / esfuerzo` (mayor = quick win de alto impacto). Cada recomendación incluye justificación normativa (output 2.3) anclada en la Constitución del país → normativa estatutaria → ISO → NIST.
+**Priorización:** `prioridad = severidad / esfuerzo` (mayor = quick win de alto impacto). Cada recomendación incluye justificación normativa (output 2.3) anclada en ISO 42001, NIST AI RMF y los principios éticos UNESCO/OCDE.
 
 ---
 
@@ -183,7 +183,7 @@ Inspiradas en el modelo de "queso suizo" de Hendrycks — los huecos de una capa
 Si ningún chunk supera el umbral (0.35) tras el rerank, el sistema no genera. **Resultado en el golden set: 0 abstenciones** (las 10 consultas tuvieron fundamento suficiente).
 
 #### Capa 2 — Validación determinista de citas (`rag/verifier.py`)
-Toda referencia normativa que el LLM mencione (artículos, controles ISO, leyes, CONPES) debe existir realmente en el corpus o en `controls.json`. Si el modelo inventa "Artículo 47 de la Ley 1581" inexistente, se detecta automáticamente.
+Toda referencia normativa que el LLM mencione (controles ISO, funciones NIST) debe existir realmente en el corpus o en `controls.json`. Si el modelo inventa "ISO 42001 A.99" o "NIST AI RMF 9.9" inexistente, se detecta automáticamente.
 
 **Mecanismo:** regex que extrae citas del texto (`art. N`, `A.N.N`, `ley 1581`, `conpes 4144`), las normaliza, y verifica contra un índice construido del corpus + `controls.json`. Barato, determinista, sin LLM.
 
@@ -215,42 +215,24 @@ Una segunda llamada LLM comprueba que cada afirmación atómica de la política 
 
 ### 4.1 Golden set
 
-10 consultas representativas del árbol de preguntas, cada una con los controles ISO y referencias legales esperados (`data/golden_set.json`). Cubren: supervisión humana, datos personales, gobernanza de datos, política de IA, roles, evaluación de impacto, transparencia, IA de terceros, incidentes, beneficencia.
+> Pendiente de regeneración con el corpus normativo universal (NIST AI RMF, ISO 42001 y principios éticos UNESCO/OCDE).
+
+El golden set original cubría 10 consultas representativas del árbol (supervisión humana, datos personales, gobernanza de datos, política de IA, roles, evaluación de impacto, transparencia, IA de terceros, incidentes, beneficencia). Al migrar a un corpus exclusivamente universal, se eliminó el golden set anterior y se dejará un nuevo conjunto de consultas-oro con referencias esperadas de ISO/NIST/principios.
 
 ### 4.2 Harness de evaluación (`eval_harness.py`)
 
-Paralelizado con `ThreadPoolExecutor` (10 workers) para no esperar secuencialmente. Genera una política por consulta + verifica faithfulness. Modelos: `kimi-k2.6` para política (rápido), `glm-5.2` para faithfulness (fiable para JSON).
+Paralelizado con `ThreadPoolExecutor` (10 workers). Genera una política por consulta + verifica faithfulness. Modelos: `glm-5.2` para política y faithfulness (fiable para JSON).
 
 ### 4.3 Métricas finales
 
+> Por regenerar tras la migración al corpus universal.
+
 | Métrica | Definición | Resultado |
 |---------|-----------|-----------|
-| **Recall@6** | % de fuentes esperadas que aparecen en el top-6 recuperado | **0.85** (min 0.5, max 1.0) |
-| **Precisión de citas** | % de citas en la política que existen en el corpus | **1.0** (100%) |
-| **Faithfulness** | % de afirmaciones respaldadas por las fuentes (LLM-as-judge) | **0.884** (min 0.684, max 1.0, n=10) |
-| **Abstenciones** | Consultas sin fundamento suficiente | 0/10 |
-| **Afirmaciones no respaldadas detectadas** | unfaithful + partial en total | 13 |
-
-### 4.4 Detalle por consulta
-
-| ID | Tema | Recall@6 | Prec. citas | Faithfulness | Claims | Faithful | Unfaithful |
-|---|---|---|---|---|---|---|---|
-| g1 | supervisión humana | 1.00 | 1.00 | 0.833 | 12 | 10 | 1 |
-| g2 | datos personales / consentimiento | 0.50 | 1.00 | 0.875 | 16 | 14 | 1 |
-| g3 | gobernanza de datos | 0.50 | 1.00 | 0.950 | 20 | 19 | 0 |
-| g4 | política de IA | 1.00 | 1.00 | 0.708 | 24 | 17 | 5 |
-| g5 | roles y responsabilidades | 1.00 | 1.00 | 1.000 | 18 | 18 | 0 |
-| g6 | evaluación de impacto / sesgo | 1.00 | 1.00 | 0.955 | 22 | 21 | 0 |
-| g7 | transparencia / comunicación a usuarios | 1.00 | 1.00 | 0.684 | 19 | 13 | 5 |
-| g8 | IA de terceros / proveedores | 1.00 | 1.00 | 0.917 | 12 | 11 | 0 |
-| g9 | incidentes / respuesta a fallas | 0.50 | 1.00 | 1.000 | 18 | 18 | 0 |
-| g10 | beneficencia / impacto positivo | 1.00 | 1.00 | 0.913 | 23 | 21 | 1 |
-
-### 4.5 Interpretación
-
-- **Recall@6 = 0.85**: el retrieval híbrido recupera el 85% de las fuentes esperadas. Los casos con 0.5 corresponden a consultas donde la capa densa de Voyage rate-limiteda (capa gratuita 3 RPM) y degradó a BM25+estructurado — aún así el espinazo estructurado trajo el control ISO correcto en 9/10 casos.
-- **Precisión de citas = 1.0**: la 2ª capa anti-alucinación garantiza que toda cita mencionada existe en el corpus. Cero alucinaciones de citas.
-- **Faithfulness = 0.884**: la 3ª capa detecta que el 88.4% de las afirmaciones están respaldadas por las fuentes. Las 13 no respaldadas (unfaithful + partial) se marcan para revisión humana — el sistema no las oculta, las exhibe.
+| **Recall@6** | % de fuentes esperadas que aparecen en el top-6 recuperado | Pendiente |
+| **Precisión de citas** | % de citas en la política que existen en el corpus | Pendiente |
+| **Faithfulness** | % de afirmaciones respaldadas por las fuentes (LLM-as-judge) | Pendiente |
+| **Abstenciones** | Consultas sin fundamento suficiente | Pendiente |
 
 ---
 
@@ -306,8 +288,8 @@ app/backend/
 ## 7. Decisiones de diseño (no relitigar)
 
 1. **Fuente de verdad:** `PROPUESTAFINAL.md` + `ARBOL_PREGUNTAS.md` (aprobación humana). El sistema se adaptó al árbol, no al revés.
-2. **Marco ético:** 5 principios consolidados (Beneficencia, No maleficencia, Autonomía, Justicia, Explicabilidad) desde UNESCO + OCDE (Florili & Cowls 2019). CONPES/Ley 1581/Constitución CO = paquete país, no núcleo.
-3. **Ejes del diagnóstico:** ÉTICO, NIST, ISO (se eliminaron LEGAL y RESPONSABILIDAD como ejes; lo legal se atiende vía paquete nacional + justificación normativa 2.3). Se derivan del `mapeo`, sin campo `eje`.
+2. **Marco ético:** 5 principios consolidados (Beneficencia, No maleficencia, Autonomía, Justicia, Explicabilidad) desde UNESCO + OCDE (Florili & Cowls 2019). Corpus normativo universal: NIST AI RMF, ISO 42001 y principios éticos consolidados.
+3. **Ejes del diagnóstico:** ÉTICO, NIST, ISO (se eliminaron LEGAL y RESPONSABILIDAD como ejes; la dimensión legal/estatutaria se deja para futuros paquetes país). Se derivan del `mapeo`, sin campo `eje`.
 4. **Diagnóstico visual:** vector (x=ÉTICO, y=ISO, z=NIST) en espacio 3D.
 5. **Scoring:** promedio ponderado por eje, normalizado sobre preguntas efectivamente puntuadas.
 6. **Pesos:** congelados vía RAG en diseño, no en runtime. Runtime determinista.
@@ -325,6 +307,6 @@ app/backend/
 - ✅ API: `modo: completo`, `llm: True`, `voyage: True`
 - ✅ Política generada con LLM: 4316 chars, 6 citas, verificación ok=True
 - ✅ Faithfulness integrado en `/policy` (`faithfulness=true`)
-- ✅ Harness RAGAS: 10/10 con métricas (recall 0.85, citas 1.0, faithfulness 0.884)
+- ⏳ Harness RAGAS: pendiente de regeneración con corpus normativo universal
 
-**El diagnóstico y el RAG están completos para el paper y la demo.**
+**El diagnóstico y el RAG están completos para el paper y la demo. Las métricas RAGAS se actualizarán en la siguiente versión del paper.**
