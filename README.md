@@ -268,6 +268,12 @@ ai-saas-playbook/
 
 ---
 
-## Licencia
+## AVISO DE CONFIDENCIALIDAD Y RESERVA DE DERECHOS
 
-Proyecto desarrollado para el Global South AI Safety Hackathon 2026.
+Este repositorio y todo su contenido (código fuente, documentación, metodología, estructura del cuestionario, esquemas de mapeo normativo y demás materiales) constituyen información confidencial y propiedad intelectual de David Daza Jaimes, Diana Daza Jaimes, Juan Camilo Medina Moreno, Luis Carlos Ordóñez Montenegro y Ángela Pinilla Parra. Todos los derechos quedan reservados.
+
+El acceso se concede de manera limitada y revocable, con el único propósito de la evaluación académica en el marco del Global South AI Safety Hackathon 2026. No se transfiere ningún derecho de propiedad ni licencia de uso más allá de ese propósito.
+
+Queda prohibida, sin autorización previa y por escrito de los titulares, la reproducción total o parcial, la distribución, la comunicación pública, la modificación, la creación de obras derivadas, el uso comercial y la incorporación del contenido, en todo o en parte, en otros sistemas, productos o servicios.
+
+El acceso a este material implica el compromiso de mantener su confidencialidad y de no divulgarlo a terceros. El uso no autorizado podrá dar lugar a las acciones legales que correspondan conforme a la normativa aplicable de derecho de autor y propiedad intelectual.
