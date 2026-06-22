@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Loader2, AlertTriangle, ChevronLeft, ChevronRight, Paperclip, X } from 'lucide-react'
-import type { DiagnosePayload } from '../api'
-import { diagnose, getQuestions } from '../api'
+import { Loader2, AlertTriangle, ChevronLeft, ChevronRight, Paperclip, X, CheckCircle2 } from 'lucide-react'
+import type { DiagnosePayload, EvidenceAnalysis } from '../api'
+import { analyzeEvidence, diagnose, getQuestions } from '../api'
 import type { ArbolPreguntas, DiagnoseResponse, Pregunta, Subpregunta, ValorRespuesta } from '../types'
 
 const PAISES = [
@@ -55,6 +55,8 @@ export function Wizard({ onComplete, onCargarPOC }: {
   const [respuestas, setRespuestas] = useState<Record<string, ValorRespuesta>>({})
   const [evidencias, setEvidencias] = useState<string[]>([])
   const [nombresEvidencia, setNombresEvidencia] = useState<Record<string, string>>({})
+  const [analisisEvidencia, setAnalisisEvidencia] = useState<Record<string, EvidenceAnalysis>>({})
+  const [cargandoAnalisis, setCargandoAnalisis] = useState<Record<string, boolean>>({})
   const [arbol, setArbol] = useState<ArbolPreguntas | null>(null)
   const [cargandoArbol, setCargandoArbol] = useState(true)
   const [errorCarga, setErrorCarga] = useState<string | null>(null)
@@ -95,10 +97,21 @@ export function Wizard({ onComplete, onCargarPOC }: {
     setRespuestas((r) => ({ ...r, [id]: valor }))
   }
 
-  const adjuntarEvidencia = (id: string, archivo: File | null) => {
-    if (archivo) {
-      setEvidencias((e) => (e.includes(id) ? e : [...e, id]))
-      setNombresEvidencia((n) => ({ ...n, [id]: archivo.name }))
+  const adjuntarEvidencia = async (id: string, archivo: File | null) => {
+    if (!archivo) return
+    setNombresEvidencia((n) => ({ ...n, [id]: archivo.name }))
+    setCargandoAnalisis((c) => ({ ...c, [id]: true }))
+    try {
+      const resultado = await analyzeEvidence(id, archivo)
+      setAnalisisEvidencia((a) => ({ ...a, [id]: resultado }))
+      if (!resultado.error && resultado.score >= 0.2) {
+        setEvidencias((e) => (e.includes(id) ? e : [...e, id]))
+      }
+    } catch (e) {
+      console.error(e)
+      setAnalisisEvidencia((a) => ({ ...a, [id]: { error: 'No se pudo analizar' } as EvidenceAnalysis }))
+    } finally {
+      setCargandoAnalisis((c) => ({ ...c, [id]: false }))
     }
   }
 
@@ -106,6 +119,11 @@ export function Wizard({ onComplete, onCargarPOC }: {
     setEvidencias((e) => e.filter((x) => x !== id))
     setNombresEvidencia((n) => {
       const copia = { ...n }
+      delete copia[id]
+      return copia
+    })
+    setAnalisisEvidencia((a) => {
+      const copia = { ...a }
       delete copia[id]
       return copia
     })
@@ -403,6 +421,8 @@ function PasoArbol({
           adjuntarEvidencia={adjuntarEvidencia}
           removerEvidencia={removerEvidencia}
           nombreEvidencia={nombresEvidencia[p.id]}
+          analisis={analisisEvidencia[p.id]}
+          cargandoAnalisis={cargandoAnalisis[p.id]}
         />
       ))}
 
@@ -436,6 +456,8 @@ function PreguntaCard({
   adjuntarEvidencia,
   removerEvidencia,
   nombreEvidencia,
+  analisis,
+  cargandoAnalisis,
 }: {
   pregunta: Pregunta
   index: number
@@ -447,6 +469,8 @@ function PreguntaCard({
   adjuntarEvidencia: (id: string, archivo: File | null) => void
   removerEvidencia: (id: string) => void
   nombreEvidencia?: string
+  analisis?: EvidenceAnalysis
+  cargandoAnalisis?: boolean
 }) {
   const filasMatriz = pregunta.filas_de ? (Number(respuestas[pregunta.filas_de]) || 0) : 0
 
@@ -457,10 +481,14 @@ function PreguntaCard({
           <span className="text-slate-400 mr-1">{index + 1}.</span>
           {pregunta.texto}
         </h3>
-        {tieneEvidencia ? (
+        {cargandoAnalisis ? (
+          <span className="inline-flex items-center gap-1.5 text-xs text-slate-500 shrink-0">
+            <Loader2 className="w-3 h-3 animate-spin" /> Analizando…
+          </span>
+        ) : tieneEvidencia ? (
           <div className="flex items-center gap-2 shrink-0">
             <span className="inline-flex items-center gap-1.5 text-xs text-green-700 bg-green-50 rounded-full px-2.5 py-1">
-              <Paperclip className="w-3 h-3" />
+              <CheckCircle2 className="w-3 h-3" />
               <span className="max-w-[120px] truncate">{nombreEvidencia || 'Archivo adjunto'}</span>
             </span>
             <button
@@ -483,6 +511,21 @@ function PreguntaCard({
           </label>
         )}
       </div>
+      {analisis && (
+        <div className={`mb-3 text-xs rounded-lg px-3 py-2 ${analisis.error ? 'bg-red-50 text-red-700' : analisis.score >= 0.2 ? 'bg-green-50 text-green-700' : 'bg-amber-50 text-amber-700'}`}>
+          {analisis.error ? (
+            <span>{analisis.error}</span>
+          ) : (
+            <span>
+              Cobertura de evidencia: <strong>{Math.round(analisis.score * 100)}%</strong>{' '}
+              ({analisis.encontradas}/{analisis.palabras_clave} conceptos clave).
+              {analisis.coincidencias.length > 0 && (
+                <> Coincidencias: {analisis.coincidencias.join(', ')}.</>
+              )}
+            </span>
+          )}
+        </div>
+      )}
       {pregunta.contexto_pyme && (
         <p className="text-xs text-slate-500 mb-4">{pregunta.contexto_pyme}</p>
       )}

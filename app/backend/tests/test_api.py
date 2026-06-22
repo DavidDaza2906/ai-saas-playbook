@@ -80,6 +80,31 @@ def test_diagnose_caso_poc():
     assert prioridades == sorted(prioridades, reverse=True)
 
 
+def test_analyze_evidence_pdf_texto():
+    """/analyze-evidence acepta un PDF de texto y devuelve score de cobertura."""
+    import io
+    from reportlab.pdfgen import canvas
+
+    buffer = io.BytesIO()
+    c = canvas.Canvas(buffer)
+    c.drawString(72, 700, "Tenemos un comité de ética de IA y documentamos riesgos.")
+    c.save()
+    buffer.seek(0)
+
+    r = client.post(
+        "/api/analyze-evidence",
+        data={"pregunta_id": "q1"},
+        files={"archivo": ("etica.pdf", buffer, "application/pdf")},
+    )
+    assert r.status_code == 200
+    body = r.json()
+    assert body["pregunta_id"] == "q1"
+    assert body["caracteres"] > 0
+    assert body["palabras_clave"] > 0
+    assert 0 <= body["score"] <= 1
+    assert body["escalable_a_llm"] is True
+
+
 def test_artifacts_plan_y_constancia():
     """/artifacts devuelve plan accionable + constancia verificable (sin política)."""
     caso = {

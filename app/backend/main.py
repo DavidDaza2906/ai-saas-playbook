@@ -15,7 +15,7 @@ from __future__ import annotations
 import os
 
 from dotenv import load_dotenv
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -32,6 +32,7 @@ from rag import llm_client  # noqa: E402
 from rag.faithfulness import verificar as verificar_faithfulness  # noqa: E402
 from rag.retriever import retrieve  # noqa: E402
 from rag.verifier import validar  # noqa: E402
+from evidence_analyzer import analizar_evidencia  # noqa: E402
 from fastapi.responses import Response  # noqa: E402
 
 app = FastAPI(title="Playbook IA Responsable — API")
@@ -189,3 +190,14 @@ def policy(body: PolicyIn):
         "verificacion": verificacion,
         "faithfulness": faith,
     }
+
+
+@app.post("/api/analyze-evidence")
+async def analyze_evidence(
+    pregunta_id: str = File(...),
+    archivo: UploadFile = File(...),
+):
+    """Extrae texto de un documento y calcula cobertura heurística de palabras clave
+    respecto a la pregunta indicada. Escalable a verificación semántica con LLM."""
+    contenido = await archivo.read()
+    return analizar_evidencia(contenido, archivo.filename, pregunta_id)

@@ -88,3 +88,27 @@ export const CASO_POC: DiagnosePayload = {
   },
   evidencias: ['q1'],
 }
+
+export interface EvidenceAnalysis {
+  pregunta_id: string
+  filename: string
+  caracteres: number
+  palabras_clave: number
+  encontradas: number
+  score: number
+  coincidencias: string[]
+  escalable_a_llm: boolean
+  error?: string
+}
+
+export async function analyzeEvidence(preguntaId: string, archivo: File): Promise<EvidenceAnalysis> {
+  const form = new FormData()
+  form.append('pregunta_id', preguntaId)
+  form.append('archivo', archivo)
+  const r = await fetch(`${BASE}/analyze-evidence`, {
+    method: 'POST',
+    body: form,
+  })
+  if (!r.ok) throw new Error(`/analyze-evidence HTTP ${r.status}: ${await r.text()}`)
+  return r.json()
+}

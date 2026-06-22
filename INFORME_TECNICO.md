@@ -100,8 +100,20 @@ Los pesos finos son los que separan las coordenadas y les dan significado (con p
 | Eje ético por principio | promedio de puntajes por principio (UNESCO/OCDE) |
 | 1.4 Cobertura ISO | estado por control (peor estado gana si múltiples preguntas lo tocan) |
 | 1.5 Gap register | controles no implementados, ordenados por severidad |
-| 1.6 Verificabilidad | % de respuestas con evidencia adjunta (bajo/medio/alto) |
+| 1.6 Verificabilidad | % de respuestas con evidencia adjunta. El adjunto se analiza heurísticamente (`evidence_analyzer.py`) extrayendo texto de PDF/DOCX/TXT y midiendo cobertura de palabras clave de la pregunta y su mapeo normativo. |
 | **Vector (x, y, z)** | promedio ponderado por eje, 0–100 |
+
+#### Análisis de evidencias (`evidence_analyzer.py`)
+
+El frontend permite adjuntar un archivo por pregunta. El backend:
+
+1. Extrae texto plano según extensión: PyMuPDF para PDF, `python-docx` para DOCX, UTF-8 para TXT.
+2. Tokeniza el texto (minúsculas, sin stopwords españolas, sin números sueltos).
+3. Construye un conjunto de palabras clave a partir del texto de la pregunta, su contexto PYME, los controles ISO 42001, las funciones NIST AI RMF y los principios éticos mapeados.
+4. Calcula `score = |keywords ∩ tokens| / |keywords|`.
+5. Devuelve `{score, encontradas, palabras_clave, coincidencias, escalable_a_llm}`.
+
+El campo `escalable_a_llm` indica que la misma tubería puede reemplazar la comparación léxica por verificación semántica con LLM (Opción 3 del diseño) sin cambiar la interfaz.
 
 ### 2.7 Recomendaciones — Capa 2
 

@@ -33,6 +33,7 @@ cd app/frontend && npm run dev
   - Árbol de 34 preguntas (15 base + 19 subpreguntas condicionales).
   - Tipos de pregunta: opción múltiple, escala Likert, **numérico** (¿cuántos sistemas?), **matriz** (clasificar riesgo por sistema), texto abierto.
   - Subpreguntas aparecen según respuestas (ej. "¿usa datos personales? Sí" → activa consentimiento, DPIA, responsable de datos).
+  - **Adjuntar evidencia:** el usuario puede subir PDF/DOCX/TXT en cualquier pregunta. El backend extrae el texto y devuelve un **score de cobertura** (% de palabras clave de la pregunta encontradas en el documento). Si supera el umbral, la respuesta se considera verificada con evidencia.
 
 ### 2. Pestaña "Vector 3D" (1 min)
 - **Mostrar:** dashboard con 3 visualizaciones + gap register.

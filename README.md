@@ -39,7 +39,7 @@ El sistema evalúa a una PYME en 3 capas:
 
 | Capa | Qué produce | Naturaleza |
 |------|-------------|-----------|
-| **1. Diagnóstico** | Vector 3D (ÉTICO, ISO, NIST) + gap register + verificabilidad | Determinista (reglas) |
+| **1. Diagnóstico** | Vector 3D (ÉTICO, ISO, NIST) + gap register + verificabilidad por evidencia documental | Determinista (reglas) |
 | **2. Recomendaciones** | Hoja de ruta priorizada con justificación normativa | Determinista (lookup) |
 | **3. Ejecución (RAG)** | Política de IA generada a la medida + plan accionable + constancia verificable | Generativa (LLM + retrieval) |
 
@@ -172,6 +172,7 @@ cd app/backend
 | POST | `/api/policy` | Política de IA con RAG + faithfulness (Capa 3) |
 | POST | `/api/artifacts` | Plan accionable (3.5) + constancia verificable (3.6) |
 | POST | `/api/informe` | Informe PDF descargable (WeasyPrint) |
+| POST | `/api/analyze-evidence` | Extrae texto de PDF/DOCX/TXT y devuelve score de cobertura heurística contra la pregunta |
 
 ---
 

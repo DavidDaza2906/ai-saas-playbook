@@ -87,21 +87,22 @@ Backend funcional con RAG completo (3 capas anti-alucinación + métricas RAGAS 
 - [ ] 3.2 Registros operativos (inventario, matriz de riesgos, plantilla EIA)
 - [ ] 3.3 Procedimientos · 3.4 Insumos de auditoría (SoA)
 
-### Frontend (bloqueado por Node)
-- [ ] Scaffold Vite/React/TS
-- [ ] Wizard 4 pasos (contexto → bifurcación → árbol → resultados)
-- [ ] Dashboard: radar NIST, plano cartesiano, gap register, verificabilidad
-- [ ] Render de artefactos Capa 3 + descarga
+### Frontend
+- [x] Scaffold Vite/React/TS
+- [x] Wizard 4 pasos (contexto → bifurcación → árbol → resultados)
+- [x] Dashboard: radar NIST, plano cartesiano, gap register, verificabilidad
+- [x] Render de artefactos Capa 3 + descarga
+- [x] Subida real de archivos + análisis heurístico de cobertura
 
 ### Mecanismos de seguridad (§6)
-- [ ] 6.1 Exponer disclaimer por API
-- [ ] 6.2 Reporte de errores (endpoint + UI)
-- [ ] 6.3 Extracción real de documentos subidos (parsing PDF/OCR)
+- [x] 6.1 Disclaimer visible en README y UI
+- [x] 6.2 Fallback silencioso ante errores de créditos del LLM
+- [x] 6.3 Extracción real de documentos subidos (PDF/DOCX/TXT) vía `evidence_analyzer.py`
 
 ### Decisiones abiertas (requieren input del usuario)
 - [ ] Rol del RAG en Capa 2 (híbrido / generativo / 100% determinista) — en discusión
 - [ ] Dimensión proveedor/usuario de los 5 principios: ¿activarla en el diagnóstico?
-- [ ] Corregir contradicción en el pitch de `PROPUESTAFINAL.md` (evidencia "obligatoria" vs voluntaria)
+- [x] Corregir contradicción en el pitch de `PROPUESTAFINAL.md` (evidencia "obligatoria" vs voluntaria) → resuelto: evidencia voluntaria
 
 ### Validación con keys reales (hecho)
 - [x] API de OpenCode confirmada: `https://opencode.ai/zen/go/v1/chat/completions`, modelo `glm-5.2`, UA `opencode/1.15.7`
