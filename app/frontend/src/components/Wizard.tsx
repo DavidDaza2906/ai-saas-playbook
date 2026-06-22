@@ -13,7 +13,13 @@ const PAISES = [
   { valor: 'PE', etiqueta: 'Perú', activo: false },
 ]
 
-const SECTORES = ['Comercio', 'Salud', 'Financiero', 'Manufactura', 'Educación', 'Otro']
+const SECTORES = [
+  { categoria: 'Servicios', items: ['Comercio/Retail', 'Salud', 'Educación', 'Hostelería/Turismo', 'Medios/Comunicación', 'Servicios profesionales', 'Transporte/Logística'] },
+  { categoria: 'Industria', items: ['Manufactura', 'Construcción', 'Agricultura/Agro', 'Minería/Energía'] },
+  { categoria: 'Tecnología', items: ['Tecnología/Software', 'Telecomunicaciones'] },
+  { categoria: 'Financiero', items: ['Financiero/Bancario', 'Seguros'] },
+  { categoria: 'Otros', items: ['Sector público', 'Otro'] },
+]
 
 const STEPS = ['Contexto', 'Bifurcación', 'Árbol', 'Resultados']
 
@@ -210,8 +216,12 @@ export function Wizard({ onComplete, onCargarPOC }: {
                 className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-indigo-500"
               >
                 <option value="">Selecciona un sector…</option>
-                {SECTORES.map((s) => (
-                  <option key={s} value={s}>{s}</option>
+                {SECTORES.map((grupo) => (
+                  <optgroup key={grupo.categoria} label={grupo.categoria}>
+                    {grupo.items.map((s) => (
+                      <option key={s} value={s}>{s}</option>
+                    ))}
+                  </optgroup>
                 ))}
               </select>
             </div>

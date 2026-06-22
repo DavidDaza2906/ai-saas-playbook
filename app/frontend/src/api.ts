@@ -71,7 +71,7 @@ export async function getArtifacts(payload: ArtifactsPayload): Promise<Artifacts
 export const CASO_POC: DiagnosePayload = {
   bifurcacion: '3',
   pais: 'CO',
-  sector: 'Comercio',
+  sector: 'Comercio/Retail',
   respuestas: {
     q1: 'parcial', q2: ['c'], q2a: 'parcial',
     q3: 3, q3b: 'algunos', q4: ['medio', 'alto', 'bajo'],
