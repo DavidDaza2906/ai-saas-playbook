@@ -1,0 +1,182 @@
+{
+  "q1": {
+    "etico": 0.2,
+    "iso": 1.0,
+    "nist": 1.0,
+    "justificacion": "NIST GOVERN 1.1 exige 'políticas y procesos documentados' e ISO 42001 A.2.2 requiere 'definir, documentar y aprobar una política de IA', por lo que la pregunta mide directamente gobernanza (ISO/NIST), pero solo tangencialmente explicabilidad mediante la existencia de documentación."
+  },
+  "q2": {
+    "etico": 0.3,
+    "iso": 1.0,
+    "nist": 1.0,
+    "justificacion": "La pregunta coincide directamente con ISO 42001 A.3.2/cláusula 5.3 ('definir y asignar roles y responsabilidades') y con NIST GOVERN (responsabilidad sobre decisiones de uso y supervisión); el vínculo ético es indirecto, pues la supervisión humana remite al principio de autonomía (CONPES 4144 principio 1) más que a explicabilidad o justicia declaradas en el mapeo."
+  },
+  "q2a": {
+    "etico": 0.2,
+    "iso": 0.6,
+    "nist": 0.9,
+    "justificacion": "El acceso a información sobre políticas, riesgos y mejores prácticas es central para GOVERN (NIST AI RMF: 'cultiva una cultura de gestión de riesgos de IA; establece políticas, procesos y procedimientos transparentes'), parcialmente relevante para ISO A.3.2 sobre roles y responsabilidades, y solo tangencialmente vinculado al eje ético de explicabilidad."
+  },
+  "q3": {
+    "etico": 0.1,
+    "iso": 0.4,
+    "nist": 0.85,
+    "justificacion": "El inventario de sistemas de IA es un paso directo de la función MAP del NIST para establecer el contexto; para ISO A.5.2 es un prerrequisito indirecto de la evaluación de impacto, y no mide explicabilidad ni ningún principio ético de los fragmentos citados."
+  },
+  "q3b": {
+    "etico": 0.9,
+    "iso": 0.3,
+    "nist": 0.8,
+    "justificacion": "La pregunta indaga directamente sobre la explicabilidad del sistema (principio ético declarado) y se alinea con la función MAP del NIST (comprender el contexto y funcionamiento del sistema), mientras que el fragmento ISO A.7.2 trata principalmente gestión de datos, no decisión del modelo."
+  },
+  "q4": {
+    "etico": 0.8,
+    "iso": 0.9,
+    "nist": 0.9,
+    "justificacion": "ISO 42001 A.5.2 exige evaluar consecuencias para individuos, grupos y sociedad incluyendo impactos sobre derechos, y A.5.4 requiere identificar y evaluar riesgos registrando severidad; CONPES 4144 principio 3 exige evaluar impacto sobre grupos protegidos (no_maleficencia, justicia); NIST MAP/MEASURE cubren clasificación y medición de riesgos por impacto."
+  },
+  "q5": {
+    "etico": 1.0,
+    "iso": 0.9,
+    "nist": 0.9,
+    "justificacion": "La pregunta indaga directamente la inteligibilidad ('¿cómo funciona?') que el principio de explicabilidad define como condición habilitante de los demás principios, y sustenta la autonomía al permitir 'un juicio informado' (CONPES 4144 principios 1 y 2; fragmentos de explicabilidad y autonomía)."
+  },
+  "q5a": {
+    "etico": 0.8,
+    "iso": 0.4,
+    "nist": 0.6,
+    "justificacion": "La explicabilidad requiere inteligibilidad sobre cómo funciona el sistema y rendición de cuentas, lo que depende directamente del acceso a la documentación del proveedor; A.7.2 conecta con la procedencia de datos y MEASURE necesita documentación para evaluar riesgos."
+  },
+  "q5b": {
+    "etico": 0.5,
+    "iso": 0.8,
+    "nist": 0.7,
+    "justificacion": "El conocimiento de los datos usados es central para ISO A.6.2 (gestión de datos) y para NIST MAP (documentación del contexto y propósito del sistema), mientras que para el eje ético se vincula indirectamente con la autonomía vía los principios de transparencia y consentimiento informado de la Ley 1581."
+  },
+  "q6": {
+    "etico": 0.8,
+    "iso": 0.6,
+    "nist": 0.7,
+    "justificacion": "El uso de datos personales en IA impacta directamente la autonomía (consentimiento previo, Ley 1581 art. 9) y la justicia (potencial de sesgos, ISO A.5.2), y es información base para las funciones MAP y GOVERN del NIST al establecer el contexto de tratamiento."
+  },
+  "q6a": {
+    "etico": 0.9,
+    "iso": 0.2,
+    "nist": 0.5,
+    "justificacion": "El consentimiento informado es central para la autonomía ('juicio informado') y exigido por la Ley 1581 art. 9, pero los fragmentos ISO provistos (A.9.2, A.3.2) no lo abordan directamente."
+  },
+  "q6b": {
+    "etico": 0.9,
+    "iso": 0.7,
+    "nist": 0.9,
+    "justificacion": "El principio de no maleficencia exige 'evaluar los riesgos antes del despliegue' y NIST MEASURE evalúa explícitamente 'privacidad'; ISO A.5.4 establece el proceso de identificación y evaluación de riesgos en el ciclo de vida."
+  },
+  "q6c": {
+    "etico": 0.9,
+    "iso": 1.0,
+    "nist": 0.8,
+    "justificacion": "La designación de un responsable atiende la asignación de roles (ISO 42001 cláusula 5.3) y garantiza la autonomía del titular en el ejercicio de sus derechos (Ley 1581 art. 17)."
+  },
+  "q7": {
+    "etico": 0.95,
+    "iso": 0.9,
+    "nist": 0.7,
+    "justificacion": "El principio de autonomía establece que 'las decisiones que afectan a las personas deben permanecer bajo control humano' (UNESCO/OCDE) e ISO 42001 A.9.2 exige 'medidas para que las personas puedan supervisar... e intervenir o revertir decisiones', mientras que NIST MANAGE cubre la implementación de controles de riesgo como la supervisión humana."
+  },
+  "q7b": {
+    "etico": 0.5,
+    "iso": 0.8,
+    "nist": 0.9,
+    "justificacion": "La revisión periódica del desempeño es central para NIST MEASURE e ISO A.8.2 (monitoreo del sistema), y conecta con no_maleficencia vía la 'vigilancia anticipatoria sobre daños' que exige evaluación continua según el fragmento del principio ético."
+  },
+  "q8a": {
+    "etico": 0.9,
+    "iso": 0.85,
+    "nist": 0.7,
+    "justificacion": "La pregunta informa directamente los principios de explicabilidad y autonomía (transparencia hacia el usuario sobre el uso de IA y sus riesgos), se alinea con ISO 42001 A.5.4 sobre comunicación de impactos del sistema de IA a partes interesadas, y toca NIST GOVERN en su subcategoría de políticas y procesos transparentes (GOVERN 1.1)."
+  },
+  "q8b": {
+    "etico": 0.95,
+    "iso": 0.6,
+    "nist": 0.9,
+    "justificacion": "El principio de Justicia exige 'evaluar el impacto del sistema sobre grupos protegidos' (CONPES 4144, principio 3) y que el proveedor 'acredite que el sistema no discrimina', lo que corresponde directamente a la función MEASURE del NIST y, en ISO, al proceso de identificación y evaluación de riesgos (A.5.4/cláusula 6.1)."
+  },
+  "q8b_herr": {
+    "etico": 0.9,
+    "iso": 0.4,
+    "nist": 0.9,
+    "justificacion": "NIST MEASURE 2.11 evalúa sesgo e imparcialidad y el principio de equidad (CONPES 4144 principio 3) requiere evaluar impacto sobre grupos protegidos; el fragmento ISO A.5.4 aborda evaluación general de riesgos sin mencionar sesgo explícitamente."
+  },
+  "q9b": {
+    "etico": 0.8,
+    "iso": 0.7,
+    "nist": 0.8,
+    "justificacion": "La pregunta indaga sobre tratamiento de datos sensibles de empleados, vinculando directamente la autonomía y justicia (CONPES 4144 principio 1, centralidad humana), la evaluación de impactos de ISO 42001 A.5.2, y las funciones MAP/GOVERN del NIST para identificar contexto y riesgos sobre derechos individuales."
+  },
+  "q9a": {
+    "etico": 0.9,
+    "iso": 0.5,
+    "nist": 0.7,
+    "justificacion": "La Ley 1581/2012 art. 9 exige 'autorización previa e informada del titular' para el tratamiento de datos, lo que sustenta directamente el principio de autonomía; la conexión ISO es indirecta vía A.2.2 (comunicación de política) y NIST GOVERN aborda rendición de cuentas y transparencia con partes interesadas."
+  },
+  "q9b_doc": {
+    "etico": 0.7,
+    "iso": 0.5,
+    "nist": 0.9,
+    "justificacion": "NIST MAP 1.1 documenta propósito y contexto del sistema; el principio ético declarado (explicabilidad) se vincula con documentar datos y propósito, mientras que el fragmento ISO A.5.2/6.1 aborda evaluación de impacto documentada más que documentación específica de datos."
+  },
+  "q10b": {
+    "etico": 0.3,
+    "iso": 0.6,
+    "nist": 0.85,
+    "justificacion": "La pregunta sobre impacto operativo y continuidad ante fallos se alinea directamente con NIST MANAGE/MEASURE para gestión y medición de riesgos, e indirectamente con ISO A.8.2 sobre operación del sistema."
+  },
+  "q10a": {
+    "etico": 0.3,
+    "iso": 0.4,
+    "nist": 0.9,
+    "justificacion": "El fragmento NIST MANAGE indica directamente 'responde a incidentes y monitorea el sistema en operación' (MANAGE 1.3), lo que cubre de forma central la contingencia ante fallos; el fragmento ISO provisto (A.7.2/8.3) trata gobernanza de datos, no contingencias operativas; y la beneficencia se vincula solo indirectamente."
+  },
+  "q11": {
+    "etico": 0.3,
+    "iso": 0.5,
+    "nist": 0.8,
+    "justificacion": "La pregunta sobre cambios a sistemas de IA en operación se conecta directamente con NIST MANAGE (monitoreo po...), e indirectamente con ISO A.7.2 (gestión de datos) y los principios de explicabilidad y no maleficencia."
+  },
+  "q11a": {
+    "etico": 0.6,
+    "iso": 0.8,
+    "nist": 0.9,
+    "justificacion": "La re-evaluación tras cambios es central en MEASURE (monitoreo y evaluación continua de riesgos) y en ISO A.5.4/6.1 (evaluación a lo largo del ciclo de vida), mientras que la no maleficencia exige vigilancia anticipatoria de daños proporcional a su gravedad."
+  },
+  "q11b": {
+    "etico": 0.6,
+    "iso": 0.4,
+    "nist": 0.5,
+    "justificacion": "El principio de Autonomía exige 'capacidad de un juicio informado' lo que requiere comunicar cambios; ISO A.2.2 indica que la política 'debe comunicarse'; y GOVERN (NIST) abarca responsabilidades de transparencia hacia partes interesadas."
+  },
+  "q12": {
+    "etico": 0.85,
+    "iso": 0.55,
+    "nist": 0.9,
+    "justificacion": "La pregunta indaga directamente sobre incidentes y daños (no_maleficencia) y falta de transparencia (explicabilidad), alineándose con el principio de justicia y no discriminación del CONPES 4144 y los principios éticos UNESCO/OCDE, mientras que su núcleo de detección y gestión de incidentes corresponde centralmente a las funciones NIST MEASURE y MANAGE."
+  },
+  "q12a": {
+    "etico": 0.4,
+    "iso": 0.8,
+    "nist": 0.3,
+    "justificacion": "ISO 42001 A.7.2 exige gestionar origen, calidad y procedencia de datos (documentación directa), mientras que MANAGE se centra en actuar sobre riesgos, no en documentar; la explicabilidad se beneficia indirectamente."
+  },
+  "q12b": {
+    "etico": 0.3,
+    "iso": 0.3,
+    "nist": 0.9,
+    "justificacion": "NIST MANAGE establece directamente que se debe 'responder a incidentes y monitorear el sistema en operación', lo que hace que las acciones correctivas sean informativas de forma central; los fragmentos ISO provistos (A.10.2, A.7.2) no mencionan A.10.3 ni acciones correctivas explícitamente, y la conexión con no_maleficencia es solo indirecta."
+  },
+  "q13": {
+    "etico": 0.3,
+    "iso": 0.7,
+    "nist": 0.9,
+    "justificacion": "La pregunta evalúa directamente gobernanza y supervisión (NIST GOVERN: 'cultiva una cultura de gestión de riesgos de IA'), toca cumplimiento normativo (ISO A.3.2), pero solo tangencialmente el principio declarado de explicabilidad."
+  }
+}

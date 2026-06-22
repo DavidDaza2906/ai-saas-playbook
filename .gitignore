@@ -1,0 +1,36 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Secrets (NUNCA versionar)
+.env
+.env.local
+.env.*.local
+
+# Cache de embeddings (se regenera)
+app/backend/data/cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude/opencode sessions
+.claude/
+session.md
+
+# Logs
+*.log

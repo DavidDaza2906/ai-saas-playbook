@@ -1,0 +1,142 @@
+{
+  "nist_functions": [
+    {
+      "id": "GOVERN",
+      "nombre": "Gobernar",
+      "descripcion": "Una cultura de gestión de riesgos de IA está presente y es efectiva. Se establecen políticas, procesos, procedimientos y prácticas para mapear, medir y gestionar riesgos."
+    },
+    {
+      "id": "MAP",
+      "nombre": "Mapear",
+      "descripcion": "El contexto se establece y se comprende. Se documentan casos de uso, usuarios, impactos y supuestos del sistema de IA."
+    },
+    {
+      "id": "MEASURE",
+      "nombre": "Medir",
+      "descripcion": "Se identifican y aplican métodos y métricas apropiadas para analizar, evaluar y monitorear riesgos de IA."
+    },
+    {
+      "id": "MANAGE",
+      "nombre": "Gestionar",
+      "descripcion": "Los riesgos se priorizan y se actúa sobre ellos con base en las evaluaciones de Map y Measure."
+    }
+  ],
+  "iso_controls": [
+    {
+      "id": "A.2.2",
+      "nombre": "Política de IA",
+      "clausula": "5.2",
+      "descripcion": "La organización debe documentar una política de IA aprobada por la dirección, alineada con los objetivos de negocio y el uso responsable."
+    },
+    {
+      "id": "A.2.3",
+      "nombre": "Alineación con otras políticas organizacionales",
+      "clausula": "5.2",
+      "descripcion": "La política de IA debe ser coherente con las demás políticas de la organización (datos, seguridad, privacidad)."
+    },
+    {
+      "id": "A.3.2",
+      "nombre": "Roles y responsabilidades de IA",
+      "clausula": "5.3",
+      "descripcion": "Definir y asignar roles y responsabilidades para el sistema de gestión de IA."
+    },
+    {
+      "id": "A.5.1",
+      "nombre": "Evaluación de impacto del sistema de IA",
+      "clausula": "6.1",
+      "descripcion": "Identificar y documentar el impacto de los sistemas de IA sobre individuos, grupos y derechos fundamentales, con clasificación de riesgo por caso de uso (alto/medio/bajo)."
+    },
+    {
+      "id": "A.5.2",
+      "nombre": "Inventario de sistemas de IA",
+      "clausula": "6.1",
+      "descripcion": "Mantener un inventario de los sistemas, herramientas o aplicaciones de IA en uso (propios y de terceros), con su función, datos que procesan y fecha de implementación."
+    },
+    {
+      "id": "A.5.3",
+      "nombre": "Sesgo y equidad",
+      "clausula": "6.1",
+      "descripcion": "Evaluar de forma regular si el sistema de IA funciona de manera equivalente entre grupos (por género, etnia, edad, ingresos u otros), detectando y mitigando sesgos."
+    },
+    {
+      "id": "A.5.4",
+      "nombre": "Comunicación sobre IA a usuarios y afectados",
+      "clausula": "5.4",
+      "descripcion": "Comunicar de forma clara y anticipada a usuarios finales y personas afectadas que interactúan con IA o son evaluados por ella, indicando su función y limitaciones."
+    },
+    {
+      "id": "A.6.2",
+      "nombre": "Gestión de datos del sistema de IA",
+      "clausula": "9",
+      "descripcion": "Gestionar los datos que usa el sistema de IA (incluidos datos personales y de empleados): origen, propósito, calidad, seguridad y consentimiento."
+    },
+    {
+      "id": "A.7.2",
+      "nombre": "Documentación del sistema de IA",
+      "clausula": "8.1",
+      "descripcion": "Mantener documentación que describa cómo funciona cada sistema de IA: especificaciones técnicas, diccionarios de datos, decisiones de diseño y limitaciones conocidas."
+    },
+    {
+      "id": "A.8.2",
+      "nombre": "Control y monitoreo operativo",
+      "clausula": "8.3",
+      "descripcion": "Monitorear el desempeño del sistema de IA en operación y disponer de plan de contingencia para continuidad operativa ante fallos."
+    },
+    {
+      "id": "A.8.5",
+      "nombre": "Control de cambios del sistema de IA",
+      "clausula": "8.5",
+      "descripcion": "Gestionar y re-evaluar los riesgos tras cambios significativos a sistemas de IA (actualizaciones, re-entrenamiento, cambios en datos o criterios de decisión) y comunicarlos."
+    },
+    {
+      "id": "A.9.2",
+      "nombre": "Supervisión humana",
+      "clausula": "8.4",
+      "descripcion": "Establecer mecanismos de supervisión humana (revisión o aprobación) sobre las decisiones de IA, en especial para sistemas de alto riesgo."
+    },
+    {
+      "id": "A.10.2",
+      "nombre": "Gestión de proveedores y terceros de IA",
+      "clausula": "8.1",
+      "descripcion": "Gestionar los riesgos derivados del uso de sistemas o componentes de IA de terceros."
+    },
+    {
+      "id": "A.10.3",
+      "nombre": "Gestión de incidentes de IA",
+      "clausula": "8",
+      "descripcion": "Documentar, investigar y tomar acciones correctivas sobre incidentes, quejas o problemas derivados de sistemas de IA que afecten a clientes, empleados o la organización."
+    }
+  ],
+  "principios_eticos": [
+    {
+      "id": "beneficencia",
+      "nombre": "Beneficencia",
+      "descripcion": "El sistema de IA debe producir un bien real y verificable para el usuario y la comunidad afectada, con atención a grupos vulnerables.",
+      "consolida": ["UNESCO: proporcionalidad e inocuidad", "UNESCO: gobernanza colaborativa", "OCDE: crecimiento inclusivo y bienestar"]
+    },
+    {
+      "id": "no_maleficencia",
+      "nombre": "No maleficencia",
+      "descripcion": "Los daños deben anticiparse y prevenirse antes que repararse, con vigilancia anticipatoria de riesgos.",
+      "consolida": ["UNESCO: seguridad y protección", "OCDE: solidez, seguridad y protección"]
+    },
+    {
+      "id": "autonomia",
+      "nombre": "Autonomía",
+      "descripcion": "Las decisiones que afectan a personas deben permanecer bajo control humano, con delegación informada.",
+      "consolida": ["UNESCO: supervisión y decisión humanas", "UNESCO: derecho a la intimidad", "OCDE: derechos humanos y privacidad"]
+    },
+    {
+      "id": "justicia",
+      "nombre": "Justicia",
+      "descripcion": "Beneficios y cargas distribuidos equitativamente, sin discriminación, con responsabilidad trazable.",
+      "consolida": ["UNESCO: equidad y no discriminación", "UNESCO: sostenibilidad", "OCDE: equidad"]
+    },
+    {
+      "id": "explicabilidad",
+      "nombre": "Explicabilidad",
+      "descripcion": "Inteligibilidad (¿cómo funciona?) y rendición de cuentas (¿quién responde?). Habilita los otros cuatro principios.",
+      "consolida": ["UNESCO: transparencia y explicabilidad", "UNESCO: responsabilidad y rendición de cuentas", "OCDE: transparencia y responsabilidad"]
+    }
+  ]
+}

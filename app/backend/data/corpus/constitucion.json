@@ -1,0 +1,42 @@
+[
+  {
+    "id": "const-art13",
+    "fuente": "Constitución Política de Colombia (1991)",
+    "referencia": "Artículo 13",
+    "referencia_legal": "C.P. art. 13",
+    "id_control": null,
+    "funcion_nist": null,
+    "eje": "ETICO",
+    "texto": "Todas las personas nacen libres e iguales ante la ley, recibirán la misma protección y trato de las autoridades y gozarán de los mismos derechos, libertades y oportunidades sin ninguna discriminación por razones de sexo, raza, origen nacional o familiar, lengua, religión, opinión política o filosófica. El Estado promoverá las condiciones para que la igualdad sea real y efectiva. Relevancia para IA: los sistemas que clasifican, puntúan o seleccionan personas (ej. selección de personal, scoring) no pueden producir discriminación directa ni indirecta."
+  },
+  {
+    "id": "const-art15",
+    "fuente": "Constitución Política de Colombia (1991)",
+    "referencia": "Artículo 15",
+    "referencia_legal": "C.P. art. 15",
+    "id_control": null,
+    "funcion_nist": null,
+    "eje": "LEGAL",
+    "texto": "Todas las personas tienen derecho a su intimidad personal y familiar y a su buen nombre. Tienen derecho a conocer, actualizar y rectificar las informaciones que se hayan recogido sobre ellas en bancos de datos y archivos de entidades públicas y privadas (habeas data). En la recolección, tratamiento y circulación de datos se respetarán la libertad y demás garantías consagradas en la Constitución. Relevancia para IA: todo sistema que trate datos personales debe garantizar el habeas data."
+  },
+  {
+    "id": "const-art20",
+    "fuente": "Constitución Política de Colombia (1991)",
+    "referencia": "Artículo 20",
+    "referencia_legal": "C.P. art. 20",
+    "id_control": null,
+    "funcion_nist": null,
+    "eje": "ETICO",
+    "texto": "Se garantiza a toda persona la libertad de expresar y difundir su pensamiento y opiniones, la de informar y recibir información veraz e imparcial. Relevancia para IA: sistemas generativos o de moderación de contenido deben considerar la veracidad e imparcialidad de la información que producen o filtran."
+  },
+  {
+    "id": "const-art29",
+    "fuente": "Constitución Política de Colombia (1991)",
+    "referencia": "Artículo 29",
+    "referencia_legal": "C.P. art. 29",
+    "id_control": null,
+    "funcion_nist": null,
+    "eje": "LEGAL",
+    "texto": "El debido proceso se aplicará a toda clase de actuaciones judiciales y administrativas. Toda persona tiene derecho a presentar pruebas y a controvertir las que se alleguen en su contra. Relevancia para IA: las decisiones automatizadas que afecten derechos deben ser explicables y susceptibles de revisión y contradicción por la persona afectada."
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "etica-beneficencia",
+    "fuente": "Marco ético consolidado (UNESCO + OCDE; Floridi y Cowls, 2019)",
+    "referencia": "Principio — Beneficencia",
+    "referencia_legal": "Principio ético: Beneficencia",
+    "principio_etico": "beneficencia",
+    "id_control": "A.5.2",
+    "funcion_nist": "MAP",
+    "eje": "ETICO",
+    "pais": null,
+    "texto": "Beneficencia: el uso de un sistema de IA debe producir un bien real y verificable, no una mera promesa de beneficio, no solo para quien lo emplea sino para la comunidad afectada, con especial atención a grupos vulnerables. Corresponde al proveedor precisar para qué sirve la herramienta, en qué condiciones y a quién beneficia. Corresponde al usuario juzgar si lo que entrega es útil, correcto y apropiado para su contexto real, y descartar su uso cuando no lo sea. Consolida los principios UNESCO de proporcionalidad e inocuidad y de gobernanza colaborativa, y el principio OCDE de crecimiento inclusivo y bienestar."
+  },
+  {
+    "id": "etica-no-maleficencia",
+    "fuente": "Marco ético consolidado (UNESCO + OCDE; Floridi y Cowls, 2019)",
+    "referencia": "Principio — No maleficencia",
+    "referencia_legal": "Principio ético: No maleficencia",
+    "principio_etico": "no_maleficencia",
+    "id_control": "A.5.4",
+    "funcion_nist": "MEASURE",
+    "eje": "ETICO",
+    "pais": null,
+    "texto": "No maleficencia: los daños deben anticiparse y prevenirse antes que repararse, con vigilancia anticipatoria sobre daños individuales, colectivos, intergeneracionales y sistémicos. Corresponde al proveedor evaluar los riesgos antes del despliegue, en proporción a su gravedad posible, y acreditar las salvaguardas. Corresponde al usuario conocer suficientemente la herramienta para reconocer cuándo su resultado es erróneo, sesgado o inapropiado, y abstenerse de introducir datos privados que no deban utilizarse. Consolida UNESCO seguridad y protección y OCDE solidez, seguridad y protección."
+  },
+  {
+    "id": "etica-autonomia",
+    "fuente": "Marco ético consolidado (UNESCO + OCDE; Floridi y Cowls, 2019)",
+    "referencia": "Principio — Autonomía",
+    "referencia_legal": "Principio ético: Autonomía",
+    "principio_etico": "autonomia",
+    "id_control": "A.9.2",
+    "funcion_nist": "GOVERN",
+    "eje": "ETICO",
+    "pais": null,
+    "texto": "Autonomía: las decisiones que afectan a las personas deben permanecer bajo control humano. Las personas que puedan verse afectadas deben conservar el control sobre las decisiones que les atañen y la capacidad de un juicio informado sobre cuándo y cómo delegar en el sistema. Corresponde al usuario ejercer ese control de forma efectiva, decidiendo de manera informada el grado de delegación y reservando la decisión humana en los usos de mayor riesgo. Consolida UNESCO supervisión y decisión humanas y derecho a la intimidad, y OCDE respeto a los derechos humanos y la privacidad."
+  },
+  {
+    "id": "etica-justicia",
+    "fuente": "Marco ético consolidado (UNESCO + OCDE; Floridi y Cowls, 2019)",
+    "referencia": "Principio — Justicia",
+    "referencia_legal": "Principio ético: Justicia",
+    "principio_etico": "justicia",
+    "id_control": "A.5.2",
+    "funcion_nist": "MEASURE",
+    "eje": "ETICO",
+    "pais": null,
+    "texto": "Justicia: los beneficios y las cargas del uso de la IA deben distribuirse de forma equitativa, sin discriminación por sexo, raza, religión, discapacidad, edad u orientación sexual, y la responsabilidad debe ser trazable. Corresponde al proveedor acreditar que el sistema no discrimina y cómo controla los sesgos. Corresponde al usuario documentar y hacer transparente su propio uso, de modo que la cadena de responsabilidad sea trazable. Consolida UNESCO equidad y no discriminación, sostenibilidad y sensibilización, y OCDE equidad."
+  },
+  {
+    "id": "etica-explicabilidad",
+    "fuente": "Marco ético consolidado (UNESCO + OCDE; Floridi y Cowls, 2019)",
+    "referencia": "Principio — Explicabilidad",
+    "referencia_legal": "Principio ético: Explicabilidad",
+    "principio_etico": "explicabilidad",
+    "id_control": "A.8.2",
+    "funcion_nist": "MEASURE",
+    "eje": "ETICO",
+    "pais": null,
+    "texto": "Explicabilidad: condición que habilita a los otros cuatro principios, articulada en dos preguntas: la inteligibilidad (¿cómo funciona?) y la rendición de cuentas (¿quién responde por cómo funciona?). Sin ella, la beneficencia no distingue el bien real de un proxy, la no maleficencia no traza la causa del daño, la autonomía no funda una delegación informada y la justicia se vuelve inauditable. Corresponde al usuario una obligación que excede lo individual y se vuelve institucional: crear y sostener las condiciones para que quienes usan la herramienta puedan comprenderla, cuestionarla y emplearla responsablemente. Consolida UNESCO transparencia y explicabilidad y responsabilidad y rendición de cuentas, y OCDE transparencia y responsabilidad."
+  }
+]

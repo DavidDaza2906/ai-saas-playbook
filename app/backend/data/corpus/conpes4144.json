@@ -1,0 +1,52 @@
+[
+  {
+    "id": "conpes4144-p1",
+    "fuente": "CONPES 4144 de 2025",
+    "referencia": "Principio 1 — Centralidad / supervisión humana",
+    "referencia_legal": "CONPES 4144 (2025), principio 1",
+    "id_control": "A.9.2",
+    "funcion_nist": "GOVERN",
+    "eje": "ETICO",
+    "texto": "Uso responsable de la IA, principio de centralidad humana y supervisión humana: los sistemas de IA deben mantener al ser humano en el centro y permitir mecanismos de supervisión y control humano sobre decisiones que afecten a las personas."
+  },
+  {
+    "id": "conpes4144-p2",
+    "fuente": "CONPES 4144 de 2025",
+    "referencia": "Principio 2 — Transparencia, explicabilidad y rendición de cuentas",
+    "referencia_legal": "CONPES 4144 (2025), principio 2",
+    "id_control": "A.8.2",
+    "funcion_nist": "MEASURE",
+    "eje": "ETICO",
+    "texto": "Principio de transparencia, explicabilidad y rendición de cuentas: las organizaciones deben poder explicar cómo funcionan sus sistemas de IA y rendir cuentas por sus resultados, documentando decisiones y responsables (accountability)."
+  },
+  {
+    "id": "conpes4144-p3",
+    "fuente": "CONPES 4144 de 2025",
+    "referencia": "Principio 3 — Equidad y no discriminación",
+    "referencia_legal": "CONPES 4144 (2025), principio 3",
+    "id_control": "A.5.2",
+    "funcion_nist": "MEASURE",
+    "eje": "ETICO",
+    "texto": "Principio de equidad y no discriminación: los sistemas de IA deben evitar sesgos y resultados discriminatorios, en consonancia con el derecho a la igualdad (art. 13 C.P.). Requiere evaluar el impacto del sistema sobre grupos protegidos."
+  },
+  {
+    "id": "conpes4144-p4",
+    "fuente": "CONPES 4144 de 2025",
+    "referencia": "Principio 4 — Privacidad, gobernanza de datos y seguridad",
+    "referencia_legal": "CONPES 4144 (2025), principio 4",
+    "id_control": "A.7.2",
+    "funcion_nist": "MANAGE",
+    "eje": "LEGAL",
+    "texto": "Principio de privacidad, gobernanza de datos y seguridad: el tratamiento de datos por sistemas de IA debe respetar la privacidad y la normativa de protección de datos (Ley 1581/2012), con gobernanza de datos y medidas de seguridad. Único principio con cadena vinculante completa (autoridad: SIC)."
+  },
+  {
+    "id": "conpes4144-p5",
+    "fuente": "CONPES 4144 de 2025",
+    "referencia": "Principio 5 — Robustez, fiabilidad y seguridad",
+    "referencia_legal": "CONPES 4144 (2025), principio 5",
+    "id_control": "A.6.2",
+    "funcion_nist": "MEASURE",
+    "eje": "ETICO",
+    "texto": "Principio de robustez, fiabilidad y seguridad: los sistemas de IA deben funcionar de manera confiable, segura y robusta a lo largo de su ciclo de vida, con pruebas y monitoreo de desempeño."
+  }
+]

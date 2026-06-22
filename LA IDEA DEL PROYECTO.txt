@@ -1,0 +1,155 @@
+# LA IDEA DEL PROYECTO
+
+Diseño de un sistema verificable de gobernanza de IA para empresas latinoamericanas (presentado como SaaS, se entrega como diseño/mockup, NO funcional), que recorre tres capas: diagnóstico auditable → recomendaciones priorizadas → generación de artefactos que cierran las brechas.
+
+El diferenciador frente a herramientas existentes (fAIr LAC del BID, GIRAI, etc.) es doble:
+1. No solo diagnostica y recomienda: PRODUCE los artefactos que cierran las brechas (políticas prellenadas, registros, procedimientos, constancia verificable).
+2. Cada respuesta lleva un INDICADOR DE VERIFICABILIDAD que distingue lo autodeclarado de lo respaldado por evidencia documental. Esto previene el "cumplimiento cosmético" (marcar casillas sin sustancia).
+
+El sistema está anclado en ISO/IEC 42001:2023 y NIST AI RMF 1.0 como capa operativa de controles concretos. Está pensado para pymes (sin CISO, sin equipo de cumplimiento) que quieren usar IA de forma responsable y competitiva sin asumir riesgos ocultos.
+
+Bifurcación clave del sistema: la primera pregunta clasifica si la organización USA o DESARROLLA IA, porque las responsabilidades cambian sustancialmente.
+
+Origen del proyecto: partimos de la observación de que en latinoamerica, cuando una IA causa un daño, la responsabilidad se diluye (lo llamamos "responsabilidad huérfana"). Eso nos llevó a construir una rúbrica que mide esa orfandad y a detectar que el vacío es estructural (los principios no se vuelven obligaciones). El sistema de 3 capas es la respuesta operativa a ese diagnóstico: en vez de solo señalar el vacío, lo cierra.
+
+---
+
+# EL SISTEMA DE 3 CAPAS (arquitectura completa)
+
+## CAPA 1 — DIAGNÓSTICO
+Objetivo: convertir las respuestas en una imagen del estado actual que sea AUDITABLE, no en una opinión.
+
+Outputs:
+1. Perfil y alcance del sistema de IA. Clasificación en la bifurcación USA/DESARROLLA y delimitación del alcance evaluado. Sin esto, la madurez no es comparable entre empresas.
+2. Inventario de casos de uso de IA, con clasificación de riesgo por caso (alto/medio/bajo según impacto en personas y derechos). Alimenta directamente el control A.5 de ISO 42001 y la función MAP de NIST.
+3. Puntaje de madurez por función NIST (GOVERN, MAP, MEASURE, MANAGE), con desagregación por subcategoría. Permite un radar de madurez.
+4. Cobertura frente a ISO 42001: análisis de brecha contra cláusulas 4–10 y controles del Anexo A, indicando estado por control (ausente / parcial / implementado).
+5. Registro de brechas priorizado (gap register): cada brecha con severidad, control afectado, derecho o riesgo comprometido.
+6. Indicador de verificabilidad por respuesta: distingue entre lo autodeclarado y lo respaldado por evidencia documental, y refleja ese nivel de confianza en el diagnóstico. Ej.: una organización declara tener política de IA; el sistema marca si existe el documento que lo prueba.
+
+## CAPA 2 — RECOMENDACIONES
+Objetivo: convertir brechas en una hoja de ruta priorizada y consciente de recursos (crítico para pymes con capacidad limitada).
+
+Outputs:
+1. Recomendación por brecha, con referencia cruzada a subcategoría NIST y control ISO que cierra. Una brecha sin control de destino no genera recomendación.
+2. Priorización por reducción de riesgo vs. esfuerzo/costo (matriz o puntaje). Quick wins de bajo costo importan tanto como medidas estructurales.
+3. Justificación normativa y de derechos: por qué importa, qué riesgo o derecho fundamental atiende, qué requisito del marco satisface.
+4. Esfuerzo estimado y rol responsable sugerido (bajo/medio/alto; quién debería ejecutarla, asumiendo que una pyme no tiene CISO).
+5. Secuenciación por fases (0–30 días, 30–90, estructural).
+6. Criterio de cierre verificable por recomendación: qué evidencia concreta demuestra que la brecha quedó cerrada. Cierra el círculo con el indicador de verificabilidad de Capa 1.
+
+## CAPA 3 — EJECUCIÓN
+Objetivo: generar los artefactos que cierran las brechas. Diferenciador del SaaS: no aconseja, PRODUCE.
+
+Outputs (artefactos generados):
+1. Plantillas de política prellenadas con contexto de la organización: política de IA (A.2 / cláusula 5.2), uso aceptable, supervisión humana.
+2. Registros operativos: inventario de sistemas de IA, matriz de riesgos, plantilla de evaluación de impacto del sistema de IA (A.5).
+3. Procedimientos: respuesta a incidentes de IA, gobierno de datos (A.7), gestión de IA de terceros (A.10).
+4. Insumos de auditoría: borrador de Declaración de Aplicabilidad (SoA) de ISO 42001 y lista de verificación con rastro de auditoría.
+5. Plan de implementación accionable: tareas asignables con responsable y fecha, derivadas de la secuenciación de Capa 2.
+6. Constancia verificable: registro firmado o con sello de tiempo/hash de qué se evaluó, qué se encontró y qué se generó, en un momento determinado. Materializa el "verificable" y es un activo que la pyme muestra a clientes o reguladores.
+
+---
+
+# RÚBRICA DE ORIGEN (usada como base conceptual, NO como eje central)
+
+Construimos una rúbrica de "responsabilidad huérfana" de 5 criterios (0–3) para medir qué tan huérfana queda la responsabilidad cuando una IA causa un daño. Fue el punto de partida que reveló los vacíos y motivó la construcción del sistema.
+
+Los 5 criterios: C1 Identificabilidad del responsable (ejecutor o decisor); C2 Obligación normativa; C3 Vía de reparación; C4 Capacidad de sanción; C5 Transparencia/trazabilidad. Escala 0–3 (alto = menos huérfano). Niveles: crítica 0–6, alta 7–9, moderada 10–11, baja 12–15.
+
+Fue validada en 3 casos colombianos:
+| Criterio | Cartagena | Dragom | SECOP |
+| C1 | 1 | 3 | 2 |
+| C2 | 2 | 0 | 2 |
+| C3 | 2 | 1 | 3 |
+| C4 | 2 | 1 | 2 |
+| C5 | 3 | 1 | 2 |
+| TOTAL | 10 (moderada) | 6 (crítica) | 11 (moderada) |
+
+Casos:
+- Cartagena: juez (2023) que falló tutela usando ChatGPT con sentencias inventadas. OJO: la Corte Constitucional dijo que NO violó debido proceso → presentarlo como difusión de responsabilidad, NO como condena.
+- Dragom: dron militar colombiano (CIAC) que puede operar autónomo. La autonomía viene de fuentes de defensa (citar como tal). Conecta con PL 368/2025.
+- SECOP: evaluación de licitación delegada a IA que puntuó mal la experiencia; el chat se borró pero el error es auditable. CASO ILUSTRATIVO de mi experiencia profesional, no incidente documentado en prensa.
+
+Hallazgo: la orfandad depende del terreno regulado y trazable, no de la gravedad del daño. Cada caso es huérfano por razones distintas.
+
+Estos casos pueden usarse como motivación/contexto/validación del por qué el sistema es necesario, no como eje del reporte.
+
+---
+
+# MATRIZ DE TRAZABILIDAD (alimenta la Capa 1)
+
+Cruza los principios oficiales (CONPES 4144 / marco "Uso responsable de la IA") contra: ¿norma vinculante?, ¿quién la hace cumplir?, ¿tipo de vacío?
+
+5 principios: 1) Centralidad humana/supervisión humana; 2) Transparencia, explicabilidad y rendición de cuentas; 3) Equidad y no discriminación; 4) Privacidad, gobernanza de datos y seguridad; 5) Robustez, fiabilidad y seguridad.
+
+Hallazgo: solo privacidad/datos tiene cadena vinculante completa (Ley 1581/2012 + Circular SIC 002/2024 + SIC como autoridad). Los demás tienen vacíos de distinto tipo. La Circular SIC 002/2024 regula datos personales en IA pero NO cubre los daños tipo Cartagena ni Dragom (no son de datos personales).
+
+NORMAS POR VERIFICAR artículo por artículo: Ley 1581/2012, Ley 1712/2014, Circular SIC 002/2024 (confirmar si no se tiene 2026)
+
+---
+
+# FUNDAMENTOS TEÓRICOS (usar puntual, no como pilares nuevos)
+
+- Floridi (2023): la explicabilidad incluye la rendición de cuentas. Respalda que accountability importa.
+- Mittelstadt (2019) y Jobin: la brecha principio-práctica.
+- Hendrycks (2024, cap. 4): modelo del queso suizo (capas de control con huecos que se alinean).
+- UNESCO/Gutiérrez (2024, 9 enfoques regulatorios): clasifica tipos de vacío. Gutiérrez también documentó el caso Cartagena.
+- Richards, Benn & Zilka (Cambridge, 2025, arXiv:2505.04291): analizan incidentes y accountability, pero sin método replicable ni contexto colombiano.
+- ISO/IEC 42001:2023 y NIST AI RMF 1.0: la capa operativa del sistema.
+
+---
+
+# DIFERENCIACIÓN CRÍTICA (juezas del BID evaluarán)
+
+fAIr LAC (3S Ethical AI Self-Assessment, BID Lab): autoevaluación ética de IA para empresas en Latam con perfil visual y recomendaciones. Dos juezas (María Paula Mujica y Mónica Ulloa) son del BID Lab. DIFERENCIAS a defender:
+1. fAIr LAC diagnostica y recomienda; nuestro sistema además PRODUCE los artefactos que cierran las brechas (Capa 3).
+2. Nuestro indicador de verificabilidad distingue lo declarado de lo probado; fAIr LAC no.
+3. Anclaje operativo en ISO 42001 + NIST (controles concretos y auditables), no solo principios éticos.
+4. Diseño consciente de pymes (sin CISO, roles realistas, quick wins).
+
+---
+
+# CRÍTICAS DE UN REVISOR QUE DEBO RESPONDER EN EL REPORTE
+
+1. ¿Qué aporta vs. herramientas existentes? → generación de artefactos verificables + indicador de verificabilidad + anclaje ISO/NIST.
+2. Evitar "cumplimiento cosmético" → el indicador de verificabilidad distingue declarado de probado; el output no es un sello de aprobado sino un perfil con acciones pendientes.
+3. ¿Qué pasa después de la evaluación? → Capas 2 y 3 (hoja de ruta + artefactos generados).
+4. No ser obstáculo para pymes → priorización por esfuerzo/costo, quick wins, roles sin CISO, secuenciación por fases.
+
+---
+
+# REQUISITOS DEL ENTREGABLE
+
+- Plantilla oficial de Apart Research, obligatoria.
+- Reporte PDF, ~4 páginas (sin contar referencias/apéndice). Reparto: Intro+Trabajo relacionado 1p, Métodos+Resultados 2.5p, Discusión 0.5p.
+- Abstract máx. 150 palabras (la plantilla dice 150–250; ir seguro a 150).
+- Estructura: Introducción · Trabajo relacionado · Metodología · Resultados · Discusión y limitaciones · Conclusión · Code and Data · Author Contributions · Referencias · Apéndice.
+- Sección OBLIGATORIA "Limitaciones y consideraciones de doble uso".
+- "LLM Usage Statement" obligatorio.
+- Al menos una figura (sugiero: radar de madurez NIST y/o diagrama del recorrido de las 3 capas).
+- Idioma: español permitido sin penalización. Evitar texto en cursiva. Citas formato libre pero consistente.
+- Entrega: domingo 21 junio 7:00 PM hora Colombia (hard deadline del hub).
+- Evaluación (1–5 cada una): impacto/innovación; calidad de ejecución; presentación/claridad.
+
+---
+
+# RESTRICCIÓN DE TIEMPO REAL
+
+El sistema se presenta como DISEÑO/mockup demostrado con UNA prueba de concepto (un caso recorriendo las 3 capas), NO como producto funcional.
+
+---
+
+# MENTORES Y JUECES CLAVE (para calibrar el proyecto)
+
+Jueces de gobernanza presenciales:
+- Germán López-Ardila (CCIT): coordinó el informe RAM Colombia (UNESCO 2025). Charla sábado 2 PM.
+- María Paula Mujica (PNUD/BID): coautora Marco Ético para IA en Colombia, lidera AILA en 16+ países. Charla domingo 2 PM. Abogada.
+- Katerine Hernández (Alcaldía de Bogotá): capacitó +400 servidores en uso responsable de IA. Evalúa auditoría y rendición de cuentas.
+- Steve Hege (ILAPS): cofundador, IA aplicada a defensa y seguridad. Charla sábado 10:30 AM.
+
+---
+
+# QUÉ NECESITO DE TI AHORA
+
+Ayúdame a (elige según lo que yo te pida): (1) armar el esqueleto del reporte sobre la plantilla de Apart, con bullets de qué va en cada sección; (2) verificar normas pendientes; (3) diseñar las figuras; (4) reaccionar a mis borradores de cada sección; (5) afinar la prueba de concepto del caso

@@ -1,0 +1,132 @@
+[
+  {
+    "id_control": "A.2.2",
+    "brecha": "Ausencia de políticas o marcos de IA documentados",
+    "recomendacion": "Adoptar una política de IA breve, aprobada por la dirección, que declare el compromiso de uso responsable, el alcance y los principios aplicables. Si existen políticas previas parciales, consolidarlas y formalizarlas.",
+    "nist": "GOVERN",
+    "esfuerzo": "bajo",
+    "fase": "0-30",
+    "rol": "Dueño / Gerente",
+    "criterio_cierre": "Documento de política de IA firmado por la dirección y comunicado al equipo."
+  },
+  {
+    "id_control": "A.3.2",
+    "brecha": "No hay responsable designado de IA",
+    "recomendacion": "Designar formalmente a una persona o equipo responsable de la gobernanza de IA (en una PYME puede ser el dueño, el gerente o un encargado de TI), con acceso a información sobre riesgos y mejores prácticas.",
+    "nist": "GOVERN",
+    "esfuerzo": "bajo",
+    "fase": "0-30",
+    "rol": "Dueño / Gerente",
+    "criterio_cierre": "Acta o comunicación que asigna el rol y sus responsabilidades."
+  },
+  {
+    "id_control": "A.5.1",
+    "brecha": "Sin clasificación de riesgo por caso de uso",
+    "recomendacion": "Clasificar cada sistema de IA por nivel de riesgo según su impacto en personas y derechos (alto/medio/bajo). Los de alto riesgo requieren controles reforzados.",
+    "nist": "MAP",
+    "esfuerzo": "bajo",
+    "fase": "0-30",
+    "rol": "Responsable de IA",
+    "criterio_cierre": "Listado de sistemas con su nivel de riesgo y justificación del impacto."
+  },
+  {
+    "id_control": "A.5.2",
+    "brecha": "Sin inventario de sistemas de IA",
+    "recomendacion": "Construir un inventario simple de los sistemas o herramientas de IA en uso (propios y de terceros): nombre, función, datos que procesan y fecha de implementación.",
+    "nist": "MAP",
+    "esfuerzo": "bajo",
+    "fase": "0-30",
+    "rol": "Responsable de IA",
+    "criterio_cierre": "Inventario de sistemas de IA actualizado y disponible."
+  },
+  {
+    "id_control": "A.5.3",
+    "brecha": "Sin evaluación de sesgo y equidad",
+    "recomendacion": "Realizar una auditoría de sesgo y equidad del sistema de IA: verificar si funciona de manera equivalente entre grupos (género, etnia, edad, ingresos). Para alto riesgo, hacerla antes del despliegue y de forma periódica.",
+    "nist": "MEASURE",
+    "esfuerzo": "medio",
+    "fase": "30-90",
+    "rol": "Responsable de IA / TI",
+    "criterio_cierre": "Informe de auditoría de sesgo con resultados por grupo y mitigaciones."
+  },
+  {
+    "id_control": "A.5.4",
+    "brecha": "Falta de comunicación sobre IA a usuarios y afectados",
+    "recomendacion": "Comunicar de forma clara y anticipada a clientes y usuarios finales que están interactuando con IA, qué hace el sistema y cuál es el riesgo de error. Ofrecer opción de intervención humana cuando aplique.",
+    "nist": "GOVERN",
+    "esfuerzo": "bajo",
+    "fase": "0-30",
+    "rol": "Responsable de IA",
+    "criterio_cierre": "Aviso de transparencia visible en el punto de interacción o evaluación."
+  },
+  {
+    "id_control": "A.6.2",
+    "brecha": "Datos personales o sensibles sin gobernanza ni autorización",
+    "recomendacion": "Documentar el consentimiento de los titulares conforme a la normativa aplicable (Ley 1581/2012 en Colombia) y registrar qué datos se usan, con qué propósito y cómo se protegen. Aplica a datos de clientes y de empleados.",
+    "nist": "GOVERN",
+    "esfuerzo": "medio",
+    "fase": "0-30",
+    "rol": "Responsable de datos / IA",
+    "criterio_cierre": "Registro de autorizaciones y ficha de gobernanza de datos del sistema de IA."
+  },
+  {
+    "id_control": "A.7.2",
+    "brecha": "Sin documentación del sistema de IA",
+    "recomendacion": "Mantener documentación mínima de cada sistema: especificaciones técnicas, diccionarios de datos, decisiones de diseño y limitaciones conocidas. Es la base para auditar cumplimiento y detectar sesgos.",
+    "nist": "MEASURE",
+    "esfuerzo": "medio",
+    "fase": "30-90",
+    "rol": "Responsable de IA",
+    "criterio_cierre": "Documentación técnica del sistema de IA actualizada y disponible."
+  },
+  {
+    "id_control": "A.8.2",
+    "brecha": "Sin monitoreo ni plan de continuidad operativa",
+    "recomendacion": "Definir quién monitorea el desempeño del sistema de IA para detectar fallos y disponer de un plan de contingencia para operar manualmente si el sistema falla.",
+    "nist": "MANAGE",
+    "esfuerzo": "medio",
+    "fase": "30-90",
+    "rol": "Responsable de IA / TI",
+    "criterio_cierre": "Responsable de monitoreo asignado y plan de contingencia documentado."
+  },
+  {
+    "id_control": "A.8.5",
+    "brecha": "Cambios en sistemas de IA sin re-evaluación",
+    "recomendacion": "Establecer que todo cambio significativo en un sistema de IA (actualización, re-entrenamiento, cambio de datos o de criterios) dispare una re-evaluación de riesgos y su comunicación a usuarios, clientes y empleados.",
+    "nist": "MANAGE",
+    "esfuerzo": "bajo",
+    "fase": "30-90",
+    "rol": "Responsable de IA",
+    "criterio_cierre": "Bitácora de cambios con re-evaluación registrada y comunicación evidenciada."
+  },
+  {
+    "id_control": "A.9.2",
+    "brecha": "Sin supervisión humana de las decisiones de IA",
+    "recomendacion": "Implementar un paso de revisión o aprobación humana antes de que las decisiones de IA de alto o medio riesgo surtan efecto, con capacidad de revertirlas.",
+    "nist": "MANAGE",
+    "esfuerzo": "bajo",
+    "fase": "0-30",
+    "rol": "Responsable de IA",
+    "criterio_cierre": "Flujo documentado donde una persona aprueba/revisa las decisiones críticas."
+  },
+  {
+    "id_control": "A.10.2",
+    "brecha": "Riesgos de IA de terceros no gestionados",
+    "recomendacion": "Inventariar los proveedores de IA de terceros, revisar sus términos y aclarar responsabilidades sobre datos y resultados.",
+    "nist": "MANAGE",
+    "esfuerzo": "bajo",
+    "fase": "30-90",
+    "rol": "Responsable de IA / TI",
+    "criterio_cierre": "Lista de proveedores de IA con responsabilidades y cláusulas revisadas."
+  },
+  {
+    "id_control": "A.10.3",
+    "brecha": "Incidentes de IA sin documentación ni respuesta",
+    "recomendacion": "Documentar, investigar y tomar acciones correctivas sobre todo incidente, queja o problema derivado de un sistema de IA (discriminación, error grave, seguridad comprometida, falta de transparencia detectada).",
+    "nist": "MANAGE",
+    "esfuerzo": "medio",
+    "fase": "30-90",
+    "rol": "Responsable de IA",
+    "criterio_cierre": "Registro de incidentes con investigación, acciones correctivas y resolución."
+  }
+]

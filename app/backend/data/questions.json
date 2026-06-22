@@ -1,0 +1,1636 @@
+{
+  "bifurcacion": {
+    "id": "q0",
+    "texto": "¿Para qué principalmente utiliza o planea utilizar la inteligencia artificial?",
+    "contexto_pyme": "Esta bifurcación define qué riesgos legales, éticos y de gobernanza aplican a su organización y qué controles son prioritarios.",
+    "tipo": "single",
+    "opciones": [
+      {
+        "valor": "1",
+        "etiqueta": "Desarrollar o mejorar productos/servicios de IA para vender o entregar a clientes/usuarios finales"
+      },
+      {
+        "valor": "2",
+        "etiqueta": "Automatizar procesos internos de la organización"
+      },
+      {
+        "valor": "3",
+        "etiqueta": "Ambas (productos para terceros y procesos internos)"
+      }
+    ]
+  },
+  "preguntas": [
+    {
+      "id": "q1",
+      "texto": "¿Su organización tiene actualmente políticas, procedimientos o documentación sobre el uso de inteligencia artificial?",
+      "contexto_pyme": "Puede ser un documento formal, una guía interna o simplemente normas no escritas. Si existe, puede adjuntarlos para revisar el nivel de cobertura actual.",
+      "tipo": "multiple",
+      "ramas": [
+        "1",
+        "2",
+        "3"
+      ],
+      "opciones": [
+        {
+          "valor": "si",
+          "etiqueta": "Sí, existen políticas formales",
+          "puntaje": 1.0
+        },
+        {
+          "valor": "parcial",
+          "etiqueta": "Parcialmente (tenemos algunos documentos pero no completos)",
+          "puntaje": 0.5
+        },
+        {
+          "valor": "no",
+          "etiqueta": "No",
+          "puntaje": 0.0
+        }
+      ],
+      "mapeo": {
+        "nist": [
+          "GOVERN"
+        ],
+        "iso": [
+          "A.2.2"
+        ],
+        "principio": [
+          "explicabilidad"
+        ]
+      },
+      "pesos": {
+        "etico": 0.2,
+        "iso": 1.0,
+        "nist": 1.0
+      }
+    },
+    {
+      "id": "q2",
+      "texto": "En su organización, ¿quién tiene responsabilidad clara sobre las decisiones de uso, evaluación y supervisión de sistemas de IA? (puede marcar más de una)",
+      "contexto_pyme": "En una PYME típicamente no existe un CISO dedicado. Puede ser una persona, un equipo, o una combinación de roles.",
+      "tipo": "multiple_seleccion",
+      "ramas": [
+        "1",
+        "2",
+        "3"
+      ],
+      "opciones": [
+        {
+          "valor": "a",
+          "etiqueta": "Existe un rol dedicado (Oficial de IA, CISO, Gerente de Riesgos, etc.)",
+          "puntaje": 1.0
+        },
+        {
+          "valor": "b",
+          "etiqueta": "Responsabilidad compartida entre TI, Legal y Operaciones",
+          "puntaje": 0.75
+        },
+        {
+          "valor": "c",
+          "etiqueta": "Responsabilidad asumida por la Dirección / Gerencia General",
+          "puntaje": 0.5
+        },
+        {
+          "valor": "d",
+          "etiqueta": "No está claramente asignada",
+          "puntaje": 0.0
+        },
+        {
+          "valor": "e",
+          "etiqueta": "No sé",
+          "puntaje": 0.0
+        }
+      ],
+      "mapeo": {
+        "nist": [
+          "GOVERN"
+        ],
+        "iso": [
+          "A.3.2"
+        ],
+        "principio": [
+          "explicabilidad",
+          "justicia"
+        ]
+      },
+      "subpreguntas": [
+        {
+          "id": "q2a",
+          "texto": "¿Esa persona o equipo tiene acceso a información sobre políticas normativas, riesgos y mejores prácticas de IA?",
+          "contexto_pyme": "El responsable debe poder acceder a la información necesaria para cumplir su rol.",
+          "condicion": {
+            "pregunta": "q2",
+            "en": [
+              "a",
+              "b",
+              "c"
+            ],
+            "modo": "alguna"
+          },
+          "tipo": "multiple",
+          "opciones": [
+            {
+              "valor": "si",
+              "etiqueta": "Sí",
+              "puntaje": 1.0
+            },
+            {
+              "valor": "parcial",
+              "etiqueta": "Parcialmente",
+              "puntaje": 0.5
+            },
+            {
+              "valor": "no",
+              "etiqueta": "No",
+              "puntaje": 0.0
+            }
+          ],
+          "mapeo": {
+            "nist": [
+              "GOVERN"
+            ],
+            "iso": [
+              "A.3.2"
+            ],
+            "principio": [
+              "explicabilidad"
+            ]
+          },
+          "pesos": {
+            "etico": 0.2,
+            "iso": 0.6,
+            "nist": 0.9
+          }
+        }
+      ],
+      "pesos": {
+        "etico": 0.3,
+        "iso": 1.0,
+        "nist": 1.0
+      }
+    },
+    {
+      "id": "q3",
+      "texto": "¿Cuántos sistemas, herramientas o aplicaciones de IA está usando actualmente su organización? (incluya propias y adquiridas)",
+      "contexto_pyme": "IA incluye: chatbots, algoritmos de recomendación, clasificación automática, herramientas de procesamiento de lenguaje, análisis predictivo, etc. No incluya simples automatizaciones sin componente inteligente.",
+      "tipo": "numero",
+      "ramas": [
+        "1",
+        "2",
+        "3"
+      ],
+      "tramos": [
+        {
+          "hasta": 0,
+          "etiqueta": "Ninguno",
+          "puntaje": null,
+          "valor_tramo": "0"
+        },
+        {
+          "hasta": 3,
+          "etiqueta": "1 a 3",
+          "puntaje": 0.5,
+          "valor_tramo": "1-3"
+        },
+        {
+          "hasta": 999999,
+          "etiqueta": "4 o más",
+          "puntaje": 1.0,
+          "valor_tramo": "4+"
+        },
+        {
+          "hasta": null,
+          "etiqueta": "No sé",
+          "puntaje": 0.0,
+          "valor_tramo": "ns"
+        }
+      ],
+      "mapeo": {
+        "nist": [
+          "MAP"
+        ],
+        "iso": [
+          "A.5.2"
+        ],
+        "principio": [
+          "explicabilidad"
+        ]
+      },
+      "pesos": {
+        "etico": 0.1,
+        "iso": 0.4,
+        "nist": 0.85
+      }
+    },
+    {
+      "id": "q3b",
+      "texto": "Para cada sistema principal, ¿sabe usted o alguien en su organización cómo toma decisiones el sistema de IA?",
+      "contexto_pyme": "Conocer cómo decide el sistema es la base para auditarlo y explicar sus resultados.",
+      "tipo": "multiple",
+      "ramas": [
+        "1",
+        "2",
+        "3"
+      ],
+      "condicion": {
+        "pregunta": "q3",
+        "en": [
+          "1-3",
+          "4+"
+        ]
+      },
+      "opciones": [
+        {
+          "valor": "todos",
+          "etiqueta": "Sí, para todos los sistemas",
+          "puntaje": 1.0
+        },
+        {
+          "valor": "algunos",
+          "etiqueta": "Sí, para algunos",
+          "puntaje": 0.5
+        },
+        {
+          "valor": "no",
+          "etiqueta": "No",
+          "puntaje": 0.0
+        },
+        {
+          "valor": "ns",
+          "etiqueta": "No sé",
+          "puntaje": 0.0
+        }
+      ],
+      "mapeo": {
+        "nist": [
+          "MAP"
+        ],
+        "iso": [
+          "A.7.2"
+        ],
+        "principio": [
+          "explicabilidad"
+        ]
+      },
+      "pesos": {
+        "etico": 0.9,
+        "iso": 0.3,
+        "nist": 0.8
+      }
+    },
+    {
+      "id": "q4",
+      "texto": "Para cada sistema de IA identificado, clasifique el nivel de riesgo según el impacto en personas y derechos.",
+      "contexto_pyme": "Alto riesgo: un fallo o sesgo podría afectar derechos fundamentales o generar daños graves. Clasifique uno por sistema.",
+      "tipo": "matriz",
+      "ramas": [
+        "1",
+        "2",
+        "3"
+      ],
+      "filas_de": "q3",
+      "agregacion": "peor",
+      "condicion": {
+        "pregunta": "q3",
+        "en": [
+          "1-3",
+          "4+"
+        ]
+      },
+      "opciones": [
+        {
+          "valor": "bajo",
+          "etiqueta": "Bajo riesgo: decisiones informativas o de bajo impacto",
+          "puntaje": 1.0
+        },
+        {
+          "valor": "medio",
+          "etiqueta": "Riesgo medio: afecta procesos internos o decisiones que impactan moderadamente",
+          "puntaje": 0.5
+        },
+        {
+          "valor": "alto",
+          "etiqueta": "Alto riesgo: determina acceso a derechos/servicios fundamentales o afecta significativamente",
+          "puntaje": 0.0
+        },
+        {
+          "valor": "ns",
+          "etiqueta": "No sé clasificarlo",
+          "puntaje": 0.0
+        }
+      ],
+      "caso_uso": {
+        "caso": "Sistema de IA de alto riesgo",
+        "riesgo": "alto",
+        "cuando": [
+          "alto"
+        ]
+      },
+      "mapeo": {
+        "nist": [
+          "MAP",
+          "MEASURE"
+        ],
+        "iso": [
+          "A.5.1"
+        ],
+        "principio": [
+          "no_maleficencia",
+          "justicia"
+        ]
+      },
+      "pesos": {
+        "etico": 0.8,
+        "iso": 0.9,
+        "nist": 0.9
+      }
+    },
+    {
+      "id": "q5",
+      "texto": "¿Existen documentos que describan cómo funciona cada sistema de IA que usa? (especificaciones, diccionarios de datos, decisiones de diseño, limitaciones conocidas)",
+      "contexto_pyme": "Esta documentación es clave para auditoría, cumplimiento y mejora continua.",
+      "tipo": "likert",
+      "ramas": [
+        "1",
+        "2",
+        "3"
+      ],
+      "condicion": {
+        "pregunta": "q3",
+        "en": [
+          "1-3",
+          "4+"
+        ]
+      },
+      "opciones": [
+        {
+          "valor": "1",
+          "etiqueta": "1 = No existe documentación",
+          "puntaje": 0.0
+        },
+        {
+          "valor": "2",
+          "etiqueta": "2 = Existe documentación muy limitada (parcial o desactualizada)",
+          "puntaje": 0.25
+        },
+        {
+          "valor": "3",
+          "etiqueta": "3 = Existe documentación básica pero con vacíos",
+          "puntaje": 0.5
+        },
+        {
+          "valor": "4",
+          "etiqueta": "4 = Existe documentación completa pero requiere actualización",
+          "puntaje": 0.75
+        },
+        {
+          "valor": "5",
+          "etiqueta": "5 = Existe documentación completa y actualizada regularmente",
+          "puntaje": 1.0
+        }
+      ],
+      "mapeo": {
+        "nist": [
+          "MEASURE",
+          "GOVERN"
+        ],
+        "iso": [
+          "A.7.2"
+        ],
+        "principio": [
+          "explicabilidad",
+          "autonomia"
+        ]
+      },
+      "subpreguntas": [
+        {
+          "id": "q5a",
+          "texto": "¿Tiene acceso a la documentación del proveedor de la herramienta de IA?",
+          "contexto_pyme": "Si usa IA de terceros, el proveedor debe entregarle documentación.",
+          "condicion": {
+            "pregunta": "q5",
+            "en": [
+              "1",
+              "2",
+              "3"
+            ]
+          },
+          "tipo": "multiple",
+          "opciones": [
+            {
+              "valor": "si",
+              "etiqueta": "Sí",
+              "puntaje": 1.0
+            },
+            {
+              "valor": "parcial",
+              "etiqueta": "Parcialmente",
+              "puntaje": 0.5
+            },
+            {
+              "valor": "no",
+              "etiqueta": "No",
+              "puntaje": 0.0
+            }
+          ],
+          "mapeo": {
+            "nist": [
+              "MEASURE"
+            ],
+            "iso": [
+              "A.7.2"
+            ],
+            "principio": [
+              "explicabilidad"
+            ]
+          },
+          "pesos": {
+            "etico": 0.8,
+            "iso": 0.4,
+            "nist": 0.6
+          }
+        },
+        {
+          "id": "q5b",
+          "texto": "¿Sabe qué datos internos se están usando para entrenar o alimentar estos sistemas?",
+          "contexto_pyme": "Conocer los datos que alimenta la IA es parte de la gobernanza de datos.",
+          "condicion": {
+            "pregunta": "q5",
+            "en": [
+              "1",
+              "2",
+              "3"
+            ]
+          },
+          "tipo": "multiple",
+          "opciones": [
+            {
+              "valor": "si",
+              "etiqueta": "Sí",
+              "puntaje": 1.0
+            },
+            {
+              "valor": "parcial",
+              "etiqueta": "Parcialmente",
+              "puntaje": 0.5
+            },
+            {
+              "valor": "no",
+              "etiqueta": "No",
+              "puntaje": 0.0
+            }
+          ],
+          "mapeo": {
+            "nist": [
+              "MAP"
+            ],
+            "iso": [
+              "A.6.2"
+            ],
+            "principio": [
+              "autonomia"
+            ]
+          },
+          "pesos": {
+            "etico": 0.5,
+            "iso": 0.8,
+            "nist": 0.7
+          }
+        }
+      ],
+      "pesos": {
+        "etico": 1.0,
+        "iso": 0.9,
+        "nist": 0.9
+      }
+    },
+    {
+      "id": "q6",
+      "texto": "¿Su organización está utilizando datos personales en cualquiera de sus sistemas de IA? (nombre, email, género, edad, datos de desempeño, historial de crédito, información médica, ubicación, hábitos de compra, etc.)",
+      "contexto_pyme": "Aplica a cualquier información que pueda identificar a una persona. Es obligatorio bajo la normativa de protección de datos del país (Ley 1581/2012 en Colombia).",
+      "tipo": "multiple",
+      "ramas": [
+        "1",
+        "2",
+        "3"
+      ],
+      "opciones": [
+        {
+          "valor": "si",
+          "etiqueta": "Sí",
+          "puntaje": 1.0
+        },
+        {
+          "valor": "no",
+          "etiqueta": "No",
+          "puntaje": null
+        },
+        {
+          "valor": "ns",
+          "etiqueta": "No sé",
+          "puntaje": 0.0
+        }
+      ],
+      "mapeo": {
+        "nist": [
+          "MAP",
+          "GOVERN"
+        ],
+        "iso": [
+          "A.6.2"
+        ],
+        "principio": [
+          "autonomia",
+          "justicia"
+        ]
+      },
+      "subpreguntas": [
+        {
+          "id": "q6a",
+          "texto": "¿Tiene documentado el consentimiento informado de las personas cuyos datos está utilizando?",
+          "contexto_pyme": "Debe poder demostrar la autorización del titular para tratar sus datos.",
+          "condicion": {
+            "pregunta": "q6",
+            "en": [
+              "si"
+            ]
+          },
+          "tipo": "multiple",
+          "opciones": [
+            {
+              "valor": "si",
+              "etiqueta": "Sí",
+              "puntaje": 1.0
+            },
+            {
+              "valor": "parcial",
+              "etiqueta": "Parcialmente",
+              "puntaje": 0.5
+            },
+            {
+              "valor": "no",
+              "etiqueta": "No",
+              "puntaje": 0.0
+            }
+          ],
+          "mapeo": {
+            "nist": [
+              "GOVERN"
+            ],
+            "iso": [
+              "A.6.2"
+            ],
+            "principio": [
+              "autonomia"
+            ]
+          },
+          "pesos": {
+            "etico": 0.9,
+            "iso": 0.2,
+            "nist": 0.5
+          }
+        },
+        {
+          "id": "q6b",
+          "texto": "¿Ha realizado una evaluación de impacto en privacidad (DPIA o equivalente) antes de usar esos datos?",
+          "contexto_pyme": "Una DPIA identifica riesgos sobre los derechos de los titulares antes de usar sus datos.",
+          "condicion": {
+            "pregunta": "q6",
+            "en": [
+              "si"
+            ]
+          },
+          "tipo": "multiple",
+          "opciones": [
+            {
+              "valor": "si",
+              "etiqueta": "Sí",
+              "puntaje": 1.0
+            },
+            {
+              "valor": "no",
+              "etiqueta": "No",
+              "puntaje": 0.0
+            },
+            {
+              "valor": "ns",
+              "etiqueta": "No sé qué es",
+              "puntaje": 0.0
+            }
+          ],
+          "mapeo": {
+            "nist": [
+              "MEASURE"
+            ],
+            "iso": [
+              "A.5.1"
+            ],
+            "principio": [
+              "no_maleficencia"
+            ]
+          },
+          "pesos": {
+            "etico": 0.9,
+            "iso": 0.7,
+            "nist": 0.9
+          }
+        },
+        {
+          "id": "q6c",
+          "texto": "¿Existe un Responsable de Protección de Datos o alguien designado para atender derechos de acceso, rectificación y eliminación de datos?",
+          "contexto_pyme": "Alguien debe poder atender las solicitudes de los titulares sobre sus datos.",
+          "condicion": {
+            "pregunta": "q6",
+            "en": [
+              "si"
+            ]
+          },
+          "tipo": "multiple",
+          "opciones": [
+            {
+              "valor": "si",
+              "etiqueta": "Sí",
+              "puntaje": 1.0
+            },
+            {
+              "valor": "no",
+              "etiqueta": "No",
+              "puntaje": 0.0
+            },
+            {
+              "valor": "na",
+              "etiqueta": "No aplica",
+              "puntaje": null
+            }
+          ],
+          "mapeo": {
+            "nist": [
+              "GOVERN"
+            ],
+            "iso": [
+              "A.6.2"
+            ],
+            "principio": [
+              "autonomia"
+            ]
+          },
+          "pesos": {
+            "etico": 0.9,
+            "iso": 1.0,
+            "nist": 0.8
+          }
+        }
+      ],
+      "pesos": {
+        "etico": 0.8,
+        "iso": 0.6,
+        "nist": 0.7
+      }
+    },
+    {
+      "id": "q7",
+      "texto": "Para los sistemas de IA clasificados como alto o medio riesgo, ¿existe un paso de revisión o aprobación humana ANTES de que el sistema tome la decisión final? (marque las que apliquen)",
+      "contexto_pyme": "En sistemas críticos (crédito, diagnóstico médico, decisiones laborales), la supervisión humana es obligatoria.",
+      "tipo": "multiple_seleccion",
+      "ramas": [
+        "1",
+        "2",
+        "3"
+      ],
+      "condicion": {
+        "pregunta": "q4",
+        "en": [
+          "alto",
+          "medio"
+        ]
+      },
+      "opciones": [
+        {
+          "valor": "a",
+          "etiqueta": "Sí, existe revisión humana obligatoria en TODAS las decisiones",
+          "puntaje": 1.0
+        },
+        {
+          "valor": "b",
+          "etiqueta": "Sí, revisión humana solo en algunos casos (alertas o confianza baja)",
+          "puntaje": 0.5
+        },
+        {
+          "valor": "c",
+          "etiqueta": "No, el sistema toma decisiones de forma completamente automática",
+          "puntaje": 0.0
+        },
+        {
+          "valor": "d",
+          "etiqueta": "No sé",
+          "puntaje": 0.0
+        }
+      ],
+      "mapeo": {
+        "nist": [
+          "MANAGE"
+        ],
+        "iso": [
+          "A.9.2"
+        ],
+        "principio": [
+          "autonomia"
+        ]
+      },
+      "subpreguntas": [
+        {
+          "id": "q7a",
+          "texto": "¿Quién es responsable de monitorear errores o problemas con ese sistema?",
+          "contexto_pyme": "Alguien debe vigilar el funcionamiento del sistema en operación.",
+          "condicion": {
+            "pregunta": "q7",
+            "en": [
+              "c",
+              "d"
+            ],
+            "modo": "alguna"
+          },
+          "tipo": "texto",
+          "mapeo": {}
+        },
+        {
+          "id": "q7b",
+          "texto": "¿Con qué frecuencia se revisa el desempeño del sistema?",
+          "contexto_pyme": "La revisión periódica detecta degradación y sesgos nuevos.",
+          "condicion": {
+            "pregunta": "q7",
+            "en": [
+              "c",
+              "d"
+            ],
+            "modo": "alguna"
+          },
+          "tipo": "multiple",
+          "opciones": [
+            {
+              "valor": "diario",
+              "etiqueta": "Diariamente",
+              "puntaje": 1.0
+            },
+            {
+              "valor": "semanal",
+              "etiqueta": "Semanalmente",
+              "puntaje": 0.85
+            },
+            {
+              "valor": "mensual",
+              "etiqueta": "Mensualmente",
+              "puntaje": 0.7
+            },
+            {
+              "valor": "anual",
+              "etiqueta": "Anualmente",
+              "puntaje": 0.4
+            },
+            {
+              "valor": "nunca",
+              "etiqueta": "Nunca",
+              "puntaje": 0.0
+            }
+          ],
+          "mapeo": {
+            "nist": [
+              "MEASURE"
+            ],
+            "iso": [
+              "A.8.2"
+            ],
+            "principio": [
+              "no_maleficencia"
+            ]
+          },
+          "pesos": {
+            "etico": 0.5,
+            "iso": 0.8,
+            "nist": 0.9
+          }
+        }
+      ],
+      "pesos": {
+        "etico": 0.95,
+        "iso": 0.9,
+        "nist": 0.7
+      }
+    },
+    {
+      "id": "q8a",
+      "texto": "Si su producto/servicio utiliza IA, ¿comunica clara y anticipadamente a los clientes/usuarios finales que está utilizando IA, qué hace y cuál es el riesgo de error?",
+      "contexto_pyme": "Las personas afectadas tienen derecho a saber y cuestionar decisiones que las impactan.",
+      "tipo": "likert",
+      "ramas": [
+        "1",
+        "3"
+      ],
+      "opciones": [
+        {
+          "valor": "1",
+          "etiqueta": "1 = No se comunica nada sobre IA",
+          "puntaje": 0.0
+        },
+        {
+          "valor": "2",
+          "etiqueta": "2 = Se menciona brevemente en términos confusos",
+          "puntaje": 0.25
+        },
+        {
+          "valor": "3",
+          "etiqueta": "3 = Se explica que existe IA pero sin detalles técnicos",
+          "puntaje": 0.5
+        },
+        {
+          "valor": "4",
+          "etiqueta": "4 = Se explica la IA, su función y limitaciones de forma clara",
+          "puntaje": 0.75
+        },
+        {
+          "valor": "5",
+          "etiqueta": "5 = Transparencia total + opción de no usar IA o de intervención humana",
+          "puntaje": 1.0
+        }
+      ],
+      "mapeo": {
+        "nist": [
+          "GOVERN"
+        ],
+        "iso": [
+          "A.5.4"
+        ],
+        "principio": [
+          "explicabilidad",
+          "autonomia"
+        ]
+      },
+      "subpreguntas": [
+        {
+          "id": "q8a_just",
+          "texto": "¿Por qué no comunica? (Complejidad técnica / Temor a perder clientes / No lo vemos necesario / Otro)",
+          "contexto_pyme": "Entender la razón ayuda a abordar la brecha.",
+          "condicion": {
+            "pregunta": "q8a",
+            "en": [
+              "1",
+              "2"
+            ]
+          },
+          "tipo": "texto",
+          "mapeo": {}
+        }
+      ],
+      "pesos": {
+        "etico": 0.9,
+        "iso": 0.85,
+        "nist": 0.7
+      }
+    },
+    {
+      "id": "q8b",
+      "texto": "Para cada grupo de usuarios de su producto, ¿ha evaluado si el sistema de IA funciona de manera equivalente o si muestra sesgos? (por género, etnia, edad, ingresos, etc.)",
+      "contexto_pyme": "Los algoritmos frecuentemente presentan sesgos no intencionales. Detectarlos es parte de No Maleficencia y Justicia.",
+      "tipo": "multiple_seleccion",
+      "ramas": [
+        "1",
+        "3"
+      ],
+      "condicion": {
+        "pregunta": "q4",
+        "en": [
+          "alto"
+        ]
+      },
+      "opciones": [
+        {
+          "valor": "a",
+          "etiqueta": "Sí, realizamos auditorías regulares de sesgo y equidad",
+          "puntaje": 1.0
+        },
+        {
+          "valor": "b",
+          "etiqueta": "Sí, lo hicimos una vez antes de lanzar pero no de forma continua",
+          "puntaje": 0.5
+        },
+        {
+          "valor": "c",
+          "etiqueta": "No lo hemos hecho pero sabemos que debería hacerlo",
+          "puntaje": 0.25
+        },
+        {
+          "valor": "d",
+          "etiqueta": "No lo hemos hecho y no vemos por qué sea necesario",
+          "puntaje": 0.0
+        },
+        {
+          "valor": "e",
+          "etiqueta": "No sé cómo evaluar esto",
+          "puntaje": 0.0
+        }
+      ],
+      "mapeo": {
+        "nist": [
+          "MEASURE"
+        ],
+        "iso": [
+          "A.5.3"
+        ],
+        "principio": [
+          "justicia",
+          "no_maleficencia"
+        ]
+      },
+      "subpreguntas": [
+        {
+          "id": "q8b_herr",
+          "texto": "¿Tiene acceso a herramientas o servicios de auditoría de sesgo/fairness?",
+          "contexto_pyme": "Hay herramientas (open source y comerciales) para auditar sesgo.",
+          "condicion": {
+            "pregunta": "q8b",
+            "en": [
+              "b",
+              "c",
+              "d",
+              "e"
+            ],
+            "modo": "alguna"
+          },
+          "tipo": "multiple",
+          "opciones": [
+            {
+              "valor": "si",
+              "etiqueta": "Sí",
+              "puntaje": 1.0
+            },
+            {
+              "valor": "no",
+              "etiqueta": "No",
+              "puntaje": 0.0
+            },
+            {
+              "valor": "ns",
+              "etiqueta": "No sé",
+              "puntaje": 0.0
+            }
+          ],
+          "mapeo": {
+            "nist": [
+              "MEASURE"
+            ],
+            "iso": [
+              "A.5.3"
+            ],
+            "principio": [
+              "justicia"
+            ]
+          },
+          "pesos": {
+            "etico": 0.9,
+            "iso": 0.4,
+            "nist": 0.9
+          }
+        }
+      ],
+      "pesos": {
+        "etico": 0.95,
+        "iso": 0.6,
+        "nist": 0.9
+      }
+    },
+    {
+      "id": "q9b",
+      "texto": "¿Está utilizando sistemas de IA para procesar información sobre empleados (evaluación de desempeño, asignación de tareas, análisis de comportamiento) u otra información sensible de la organización (financiera, comercial, intelectual)?",
+      "contexto_pyme": "Esta información requiere controles específicos de seguridad, privacidad y cumplimiento.",
+      "tipo": "multiple",
+      "ramas": [
+        "2",
+        "3"
+      ],
+      "opciones": [
+        {
+          "valor": "si",
+          "etiqueta": "Sí",
+          "puntaje": 1.0
+        },
+        {
+          "valor": "parcial",
+          "etiqueta": "Parcialmente",
+          "puntaje": 0.5
+        },
+        {
+          "valor": "no",
+          "etiqueta": "No",
+          "puntaje": null
+        }
+      ],
+      "mapeo": {
+        "nist": [
+          "MAP",
+          "GOVERN"
+        ],
+        "iso": [
+          "A.6.2"
+        ],
+        "principio": [
+          "autonomia",
+          "justicia"
+        ]
+      },
+      "subpreguntas": [
+        {
+          "id": "q9a",
+          "texto": "¿Han sido informados los empleados o partes interesadas que sus datos están siendo procesados por IA?",
+          "contexto_pyme": "Los empleados tienen derecho a saber si la IA los evalúa.",
+          "condicion": {
+            "pregunta": "q9b",
+            "en": [
+              "si",
+              "parcial"
+            ]
+          },
+          "tipo": "multiple",
+          "opciones": [
+            {
+              "valor": "si",
+              "etiqueta": "Sí",
+              "puntaje": 1.0
+            },
+            {
+              "valor": "parcial",
+              "etiqueta": "Parcialmente",
+              "puntaje": 0.5
+            },
+            {
+              "valor": "no",
+              "etiqueta": "No",
+              "puntaje": 0.0
+            }
+          ],
+          "mapeo": {
+            "nist": [
+              "GOVERN"
+            ],
+            "iso": [
+              "A.6.2"
+            ],
+            "principio": [
+              "autonomia"
+            ]
+          },
+          "pesos": {
+            "etico": 0.9,
+            "iso": 0.5,
+            "nist": 0.7
+          }
+        },
+        {
+          "id": "q9b_doc",
+          "texto": "¿Existe documentación sobre qué datos se están usando y con qué propósito?",
+          "contexto_pyme": "Documentar el propósito del tratamiento es parte de la gobernanza de datos.",
+          "condicion": {
+            "pregunta": "q9b",
+            "en": [
+              "si",
+              "parcial"
+            ]
+          },
+          "tipo": "multiple",
+          "opciones": [
+            {
+              "valor": "si",
+              "etiqueta": "Sí",
+              "puntaje": 1.0
+            },
+            {
+              "valor": "parcial",
+              "etiqueta": "Parcialmente",
+              "puntaje": 0.5
+            },
+            {
+              "valor": "no",
+              "etiqueta": "No",
+              "puntaje": 0.0
+            }
+          ],
+          "mapeo": {
+            "nist": [
+              "MAP"
+            ],
+            "iso": [
+              "A.6.2"
+            ],
+            "principio": [
+              "explicabilidad"
+            ]
+          },
+          "pesos": {
+            "etico": 0.7,
+            "iso": 0.5,
+            "nist": 0.9
+          }
+        }
+      ],
+      "pesos": {
+        "etico": 0.8,
+        "iso": 0.7,
+        "nist": 0.8
+      }
+    },
+    {
+      "id": "q10b",
+      "texto": "Si uno de sus sistemas de IA fallara o diera resultados incorrectos, ¿cuál sería el impacto en la operación? ¿Podría continuar operando manualmente o dependería completamente del sistema?",
+      "contexto_pyme": "Esto evalúa la resiliencia operativa y el nivel de dependencia de IA.",
+      "tipo": "likert",
+      "ramas": [
+        "2",
+        "3"
+      ],
+      "condicion": {
+        "pregunta": "q3",
+        "en": [
+          "1-3",
+          "4+"
+        ]
+      },
+      "opciones": [
+        {
+          "valor": "1",
+          "etiqueta": "1 = Dependencia total: sin IA no podemos operar",
+          "puntaje": 0.0
+        },
+        {
+          "valor": "2",
+          "etiqueta": "2 = Dependencia alta: tendríamos grandes dificultades sin IA",
+          "puntaje": 0.25
+        },
+        {
+          "valor": "3",
+          "etiqueta": "3 = Dependencia media: podría continuar pero con impacto significativo",
+          "puntaje": 0.5
+        },
+        {
+          "valor": "4",
+          "etiqueta": "4 = Baja dependencia: podría continuar normalmente",
+          "puntaje": 0.75
+        },
+        {
+          "valor": "5",
+          "etiqueta": "5 = No dependencia: IA es solo experimental o marginal",
+          "puntaje": 1.0
+        }
+      ],
+      "mapeo": {
+        "nist": [
+          "MANAGE",
+          "MEASURE"
+        ],
+        "iso": [
+          "A.8.2"
+        ],
+        "principio": [
+          "beneficencia"
+        ]
+      },
+      "subpreguntas": [
+        {
+          "id": "q10a",
+          "texto": "¿Existe un plan de contingencia si el sistema falla?",
+          "contexto_pyme": "Un plan de contingencia permite operar si la IA falla.",
+          "condicion": {
+            "pregunta": "q10b",
+            "en": [
+              "1",
+              "2"
+            ]
+          },
+          "tipo": "multiple",
+          "opciones": [
+            {
+              "valor": "si",
+              "etiqueta": "Sí",
+              "puntaje": 1.0
+            },
+            {
+              "valor": "parcial",
+              "etiqueta": "Parcialmente",
+              "puntaje": 0.5
+            },
+            {
+              "valor": "no",
+              "etiqueta": "No",
+              "puntaje": 0.0
+            }
+          ],
+          "mapeo": {
+            "nist": [
+              "MANAGE"
+            ],
+            "iso": [
+              "A.8.2"
+            ],
+            "principio": [
+              "beneficencia"
+            ]
+          },
+          "pesos": {
+            "etico": 0.3,
+            "iso": 0.4,
+            "nist": 0.9
+          }
+        },
+        {
+          "id": "q10b_mon",
+          "texto": "¿Quién monitorea el desempeño del sistema para detectar fallos?",
+          "contexto_pyme": "Alguien debe vigilar el sistema en operación.",
+          "condicion": {
+            "pregunta": "q10b",
+            "en": [
+              "1",
+              "2"
+            ]
+          },
+          "tipo": "texto",
+          "mapeo": {}
+        }
+      ],
+      "pesos": {
+        "etico": 0.3,
+        "iso": 0.6,
+        "nist": 0.85
+      }
+    },
+    {
+      "id": "q11",
+      "texto": "¿Ha realizado cambios significativos a sistemas de IA existentes (actualizaciones, re-entrenamiento, cambios en datos o criterios de decisión) en los últimos 12 meses?",
+      "contexto_pyme": "Los cambios en IA pueden introducir nuevos riesgos (sesgos, degradación, impactos no anticipados).",
+      "tipo": "multiple",
+      "ramas": [
+        "1",
+        "2",
+        "3"
+      ],
+      "condicion": {
+        "pregunta": "q3",
+        "en": [
+          "1-3",
+          "4+"
+        ]
+      },
+      "opciones": [
+        {
+          "valor": "si",
+          "etiqueta": "Sí",
+          "puntaje": 1.0
+        },
+        {
+          "valor": "no",
+          "etiqueta": "No",
+          "puntaje": null
+        },
+        {
+          "valor": "na",
+          "etiqueta": "No aplica",
+          "puntaje": null
+        }
+      ],
+      "mapeo": {
+        "nist": [
+          "MANAGE"
+        ],
+        "iso": [
+          "A.8.5"
+        ],
+        "principio": [
+          "explicabilidad",
+          "no_maleficencia"
+        ]
+      },
+      "subpreguntas": [
+        {
+          "id": "q11a",
+          "texto": "¿Se re-evaluaron los riesgos después de cada cambio?",
+          "contexto_pyme": "Todo cambio significativo debe disparar una re-evaluación.",
+          "condicion": {
+            "pregunta": "q11",
+            "en": [
+              "si"
+            ]
+          },
+          "tipo": "multiple",
+          "opciones": [
+            {
+              "valor": "si",
+              "etiqueta": "Sí",
+              "puntaje": 1.0
+            },
+            {
+              "valor": "parcial",
+              "etiqueta": "Parcialmente",
+              "puntaje": 0.5
+            },
+            {
+              "valor": "no",
+              "etiqueta": "No",
+              "puntaje": 0.0
+            }
+          ],
+          "mapeo": {
+            "nist": [
+              "MEASURE"
+            ],
+            "iso": [
+              "A.8.5"
+            ],
+            "principio": [
+              "no_maleficencia"
+            ]
+          },
+          "pesos": {
+            "etico": 0.6,
+            "iso": 0.8,
+            "nist": 0.9
+          }
+        },
+        {
+          "id": "q11b",
+          "texto": "¿Fue comunicado a usuarios/clientes/empleados que hubo cambios?",
+          "contexto_pyme": "Comunicar los cambios es parte de la transparencia.",
+          "condicion": {
+            "pregunta": "q11",
+            "en": [
+              "si"
+            ]
+          },
+          "tipo": "multiple",
+          "opciones": [
+            {
+              "valor": "si",
+              "etiqueta": "Sí",
+              "puntaje": 1.0
+            },
+            {
+              "valor": "parcial",
+              "etiqueta": "Parcialmente",
+              "puntaje": 0.5
+            },
+            {
+              "valor": "no",
+              "etiqueta": "No",
+              "puntaje": 0.0
+            },
+            {
+              "valor": "na",
+              "etiqueta": "No era necesario",
+              "puntaje": null
+            }
+          ],
+          "mapeo": {
+            "nist": [
+              "GOVERN"
+            ],
+            "iso": [
+              "A.5.4"
+            ],
+            "principio": [
+              "explicabilidad"
+            ]
+          },
+          "pesos": {
+            "etico": 0.6,
+            "iso": 0.4,
+            "nist": 0.5
+          }
+        }
+      ],
+      "pesos": {
+        "etico": 0.3,
+        "iso": 0.5,
+        "nist": 0.8
+      }
+    },
+    {
+      "id": "q12",
+      "texto": "¿Ha experimentado algún incidente, queja o problema con un sistema de IA que haya impactado negativamente a clientes, empleados o la organización? (discriminación detectada, error grave, seguridad comprometida, rechazo infundado, falta de transparencia)",
+      "contexto_pyme": "Documentar incidentes es crucial para mejorar controles y demostrar diligencia debida.",
+      "tipo": "multiple",
+      "ramas": [
+        "1",
+        "2",
+        "3"
+      ],
+      "opciones": [
+        {
+          "valor": "si",
+          "etiqueta": "Sí",
+          "puntaje": 1.0
+        },
+        {
+          "valor": "no",
+          "etiqueta": "No",
+          "puntaje": null
+        },
+        {
+          "valor": "ns",
+          "etiqueta": "No sé",
+          "puntaje": 0.0
+        }
+      ],
+      "mapeo": {
+        "nist": [
+          "MANAGE",
+          "MEASURE"
+        ],
+        "iso": [
+          "A.10.3"
+        ],
+        "principio": [
+          "explicabilidad",
+          "no_maleficencia"
+        ]
+      },
+      "subpreguntas": [
+        {
+          "id": "q12a",
+          "texto": "¿Fue documentado e investigado?",
+          "contexto_pyme": "La investigación formaliza la diligencia debida.",
+          "condicion": {
+            "pregunta": "q12",
+            "en": [
+              "si"
+            ]
+          },
+          "tipo": "multiple",
+          "opciones": [
+            {
+              "valor": "si",
+              "etiqueta": "Sí",
+              "puntaje": 1.0
+            },
+            {
+              "valor": "parcial",
+              "etiqueta": "Parcialmente",
+              "puntaje": 0.5
+            },
+            {
+              "valor": "no",
+              "etiqueta": "No",
+              "puntaje": 0.0
+            }
+          ],
+          "mapeo": {
+            "nist": [
+              "MANAGE"
+            ],
+            "iso": [
+              "A.10.3"
+            ],
+            "principio": [
+              "explicabilidad"
+            ]
+          },
+          "pesos": {
+            "etico": 0.4,
+            "iso": 0.8,
+            "nist": 0.3
+          }
+        },
+        {
+          "id": "q12b",
+          "texto": "¿Se tomaron acciones correctivas?",
+          "contexto_pyme": "Sin acciones correctivas, el incidente puede repetirse.",
+          "condicion": {
+            "pregunta": "q12",
+            "en": [
+              "si"
+            ]
+          },
+          "tipo": "multiple",
+          "opciones": [
+            {
+              "valor": "si",
+              "etiqueta": "Sí",
+              "puntaje": 1.0
+            },
+            {
+              "valor": "parcial",
+              "etiqueta": "Parcialmente",
+              "puntaje": 0.5
+            },
+            {
+              "valor": "no",
+              "etiqueta": "No",
+              "puntaje": 0.0
+            }
+          ],
+          "mapeo": {
+            "nist": [
+              "MANAGE"
+            ],
+            "iso": [
+              "A.10.3"
+            ],
+            "principio": [
+              "no_maleficencia"
+            ]
+          },
+          "pesos": {
+            "etico": 0.3,
+            "iso": 0.3,
+            "nist": 0.9
+          }
+        }
+      ],
+      "pesos": {
+        "etico": 0.85,
+        "iso": 0.55,
+        "nist": 0.9
+      }
+    },
+    {
+      "id": "q13",
+      "texto": "En una escala de 1 a 5, ¿cuál es su evaluación personal del nivel de gobernanza, cumplimiento normativo y supervisión ética que su organización tiene sobre los sistemas de IA que usa?",
+      "contexto_pyme": "Esta pregunta captura su percepción para compararla con la evaluación del sistema.",
+      "tipo": "likert",
+      "ramas": [
+        "1",
+        "2",
+        "3"
+      ],
+      "opciones": [
+        {
+          "valor": "1",
+          "etiqueta": "1 = Muy bajo",
+          "puntaje": 0.0
+        },
+        {
+          "valor": "2",
+          "etiqueta": "2 = Bajo",
+          "puntaje": 0.25
+        },
+        {
+          "valor": "3",
+          "etiqueta": "3 = Medio",
+          "puntaje": 0.5
+        },
+        {
+          "valor": "4",
+          "etiqueta": "4 = Alto",
+          "puntaje": 0.75
+        },
+        {
+          "valor": "5",
+          "etiqueta": "5 = Muy alto",
+          "puntaje": 1.0
+        }
+      ],
+      "mapeo": {
+        "nist": [
+          "GOVERN"
+        ],
+        "iso": [
+          "A.3.2"
+        ],
+        "principio": [
+          "explicabilidad"
+        ]
+      },
+      "subpreguntas": [
+        {
+          "id": "q13_just",
+          "texto": "¿Por qué elegiría este puntaje? (explique brevemente)",
+          "contexto_pyme": "Su justificación enriquece el diagnóstico.",
+          "tipo": "texto",
+          "mapeo": {}
+        }
+      ],
+      "pesos": {
+        "etico": 0.3,
+        "iso": 0.7,
+        "nist": 0.9
+      }
+    }
+  ],
+  "estado_opciones": [
+    {
+      "valor": "implementado",
+      "etiqueta": "Sí, implementado y documentado",
+      "puntaje": 1.0
+    },
+    {
+      "valor": "parcial",
+      "etiqueta": "Parcialmente / informalmente",
+      "puntaje": 0.5
+    },
+    {
+      "valor": "ausente",
+      "etiqueta": "No",
+      "puntaje": 0.0
+    },
+    {
+      "valor": "na",
+      "etiqueta": "No aplica",
+      "puntaje": null
+    }
+  ]
+}

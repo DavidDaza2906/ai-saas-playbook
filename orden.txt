@@ -1,0 +1,125 @@
+================================================================
+PROYECTO HACKATHON — Playbook de IA Responsable para PYMES
+Global South AI Safety Hackathon (Track 1: Latinoamérica · Gobernanza)
+================================================================
+
+----------------------------------------------------------------
+0. RESUMEN EN UNA FRASE (pitch)
+----------------------------------------------------------------
+Una herramienta (hecha a traves de SaaS )de autodiagnóstico que, mediante un árbol de
+máximo 20 preguntas adaptadas a la realidad de una PYME, evalúa
+su uso de IA frente a normativa vigente (NIST AI RMF, directiva
+NIS, ISO) y entrega un diagnóstico de riesgos legales, éticos y
+de responsabilidad, junto con recomendaciones y una política de
+IA generada a la medida.
+
+Objetivo de fondo: DEMOCRATIZAR EL CUMPLIMIENTO Y LA ÉTICA DE LA
+IA, bajando estándares internacionales al alcance de empresas
+pequeñas del Sur Global que no tienen equipo legal ni de riesgos.
+
+
+----------------------------------------------------------------
+1. PROBLEMA QUE RESOLVEMOS
+----------------------------------------------------------------
+- Las PYMES adoptan IA sin saber qué obligaciones legales y
+  éticas asumen.
+- El cumplimiento normativo (NIST, NIS, ISO) está pensado para
+  grandes organizaciones con recursos.
+- Premisa clave: la AUSENCIA DE REGULACIÓN no implica ausencia
+  de ética; y además YA EXISTEN LEYES aplicables.
+- No cumplir implica riesgo legal, ético y reputacional, además
+  de pérdida de competitividad.
+
+
+----------------------------------------------------------------
+2. FUNDAMENTO / FUENTES (primero las fuentes, después las preguntas)
+----------------------------------------------------------------
+El flujo de construcción es: FUENTES -> PREGUNTAS -> OUTPUT.
+
+Fuentes base:
+  - NIST AI Risk Management Framework (RMF)
+  - Directiva NIS
+  - Normas ISO (familia de gestión de IA / seguridad)
+
+Contextualización por ubicación:
+  - Según el PAÍS -> integrar la normativa vigente local.
+  - Según el SECTOR -> integrar normativa específica del sector.
+De esas fuentes combinadas se derivan las preguntas.
+
+No se trata solo de "seguir un manual", sino de cubrir también
+las implicaciones de las FALLAS ÉTICAS, no únicamente las legales.
+
+
+----------------------------------------------------------------
+3. DEFINIR PRIMERO EL OUTPUT ESPERADO
+----------------------------------------------------------------
+Antes de redactar preguntas, fijar qué queremos entregar. El
+output debe cubrir tres ejes:
+  - LEGAL
+  - ÉTICO
+  - RESPONSABILIDAD (quién responde por qué)
+
+
+----------------------------------------------------------------
+4. FLUJO DE LA HERRAMIENTA (paso a paso)
+----------------------------------------------------------------
+PASO 1 — Contexto / Infraestructura
+  - Ubicación (país) y sector -> carga las fuentes normativas
+    correspondientes.
+
+PASO 2 — Pregunta de bifurcación inicial
+  ¿Usted utiliza IA para...?
+    1. Desarrolar productos o servicios para la sociedad
+    2. Automatizar procesos internos
+    3. Ambas
+  Según la respuesta se despliega el árbol de preguntas que
+  aseguran el cumplimiento de NIS e ISO.
+
+PASO 3 — Árbol de preguntas (diagramar)
+  - Máximo 20 preguntas.
+  - Cada pregunta: instrucción clara + contexto de PYME.
+  - Las ramas dependen de las respuestas anteriores.
+
+PASO 4 — Generación de resultados (ver sección 5).
+
+
+----------------------------------------------------------------
+5. OUTPUTS / ENTREGABLES AL USUARIO
+----------------------------------------------------------------
+- Matriz de diagnóstico (mapa de riesgos por área).
+- Plano cartesiano (posicionamiento: p. ej. riesgo vs. capacidad
+  de implementación, o impacto vs. probabilidad).
+- Responsabilidades por cargo (quién debe hacer qué).
+- Recomendaciones legales.
+- Evaluación de impacto (definir DE DÓNDE se obtiene la metodología
+  / o fuentes que la sustenta).
+- Capacidad de implementación (qué tan factible es para esa PYME).
+- Plan de ejecución + fuente que cumpla con el mínimo legal.
+- Generación de una POLÍTICA de IA a la medida.
+- Exista una posibilidad de reportra cualquier error de afinacion y alucinacion.
+DISCLAIMER (mostrar siempre):
+  "Esto no reemplaza asesoría legal profesional y no recibimos
+   ni procesamos datos confidenciales."
+
+
+----------------------------------------------------------------
+6. VALOR / IMPACTO (para la presentación)
+----------------------------------------------------------------
+- Impacto social: democratizar el acceso a la IA responsable.
+- Competitividad: cumplir abre mercados y reduce riesgo.
+- Contextualización regional (país/sector) -> diferenciador
+  frente a frameworks genéricos del Norte Global.
+- Alineado con el objetivo de la hackathon: traer al Sur Global
+  al centro de la seguridad de la IA.
+
+
+----------------------------------------------------------------
+7. PENDIENTES / DECISIONES ABIERTAS
+----------------------------------------------------------------
+- [ ] ¿De dónde se saca la metodología de Evaluación de Impacto?
+- [ ] Definir qué fuente respalda el "mínimo legal" de ejecución.
+- [ ] Diagramar el árbol de preguntas completo (ramas 1/2/3).
+- [ ] Definir variables exactas de los ejes del plano cartesiano.
+- [ ] Mapear normativa por país y por sector (al menos 1 ejemplo
+      para la demo, p. ej. Colombia).
+================================================================

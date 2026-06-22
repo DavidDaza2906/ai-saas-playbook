@@ -1,0 +1,268 @@
+# PROPUESTA FUSIONADA — Playbook de IA Responsable para PYMES
+> Global South AI Safety Hackathon 2026 · Track 1: Latinoamérica · Gobernanza
+> Documento maestro consolidado. Prioridad: `orden.txt`. Refuerzo operativo: `ideas2.txt`.
+
+---
+
+## 0. PITCH
+
+Una herramienta SaaS de autodiagnóstico que, mediante un árbol de **máximo 20 preguntas** adaptadas a la realidad de una PYME, evalúa su uso de IA frente a normativa vigente (NIST AI RMF, Directiva NIS, ISO 42001) y entrega un diagnóstico de riesgos legales, éticos y de responsabilidad, junto con recomendaciones y una política de IA generada a la medida.
+
+**Objetivo de fondo:** Democratizar el cumplimiento y la ética de la IA, bajando estándares internacionales al alcance de empresas pequeñas del Sur Global que no tienen equipo legal ni de riesgos.
+
+---
+
+## 1. PROBLEMA QUE RESOLVEMOS
+
+- Las PYMES adoptan IA sin saber qué obligaciones legales y éticas asumen.
+- El cumplimiento normativo (NIST, NIS, ISO) está pensado para grandes organizaciones con recursos.
+- **Premisa clave:** la ausencia de regulación no implica ausencia de ética; y además ya existen leyes aplicables.
+- No cumplir implica riesgo legal, ético, reputacional, además de pérdida de competitividad.
+
+---
+
+## 2. FUENTES NORMATIVAS Y FLUJO DE CONSTRUCCIÓN
+
+**Flujo:** FUENTES → PREGUNTAS → OUTPUT
+
+### Fuentes base (transnacionales)
+- NIST AI Risk Management Framework (RMF)
+- Directiva NIS
+- ISO 42001 (gestión de sistemas de IA) y familia ISO de seguridad
+
+### Fuentes nacionales — obligatorias por país
+> **La Constitución Política de cada país se carga de forma obligatoria como fuente normativa primaria**, ya que es el marco supremo que reconoce derechos fundamentales afectados por los sistemas de IA (intimidad, habeas data, debido proceso, igualdad, libertad de expresión, neuro-derechos, etc.). Cualquier evaluación de riesgo legal o ético debe partir de la Constitución local.
+
+- **Colombia:** Constitución Política de 1991 (art. 15 derecho a la intimidad, art. 20 habeas data, art. 13 igualdad).
+- **Brasil:** Constitución Federal de 1988 (art. 5 inc. X habeas data, art. 5 inc. LXI debido proceso).
+- **Chile:** Constitución Política (art. 19 N° 4 privacidad; primera en el mundo en proteger neuro-derechos constitucionalmente).
+- **México:** Constitución Política de los Estados Unidos Mexicanos (art. 6 acceso a la información, art. 16 protección de datos personales).
+- *(Se extiende a cada país del Sur Global según disponibilidad.)*
+
+### Contextualización adicional
+- **Por país:** además de la Constitución, integrar normativa estatutaria y reglamentaria vigente local (ej. CONPES 4144 en Colombia, PL 2338/2023 en Brasil, Ley 1581 de 2012 en Colombia para datos personales).
+- **Por sector:** integrar normativa específica del sector (salud, financiero, educación, etc.).
+
+> No se trata solo de "seguir un manual", sino de cubrir también las implicaciones de las **fallas éticas**, no únicamente las legales.
+
+---
+
+## 3. OUTPUTS ESPERADOS (EJES)
+
+Antes de redactar preguntas, fijamos qué entregamos. Los outputs cubren tres ejes:
+
+| Eje | Descripción |
+|-----|-------------|
+| **LEGAL** | Cumplimiento normativo aplicable a la PYME según país y sector. |
+| **ÉTICO** | Evaluación de riesgos para personas, derechos y equidad. |
+| **RESPONSABILIDAD** | Quién responde por qué dentro de la organización. |
+
+---
+
+## 4. FLUJO DE LA HERRAMIENTA (4 PASOS)
+
+| Paso | Descripción |
+|------|-------------|
+| **1. Contexto / Infraestructura** | Ubicación (país) y sector → carga las fuentes normativas correspondientes, incluyendo de forma obligatoria la **Constitución Política del país** como fuente primaria de derechos fundamentales. |
+| **2. Bifurcación inicial** | ¿Usted utiliza IA para...? (1) Desarrollar productos o servicios para la sociedad; (2) Automatizar procesos internos; (3) Ambas. Según la respuesta se despliega el árbol de preguntas que asegura el cumplimiento de NIS e ISO. |
+| **3. Árbol de preguntas** | **Máximo 20 preguntas.** Cada pregunta: instrucción clara + contexto de PYME. Las ramas dependen de las respuestas anteriores. Cada pregunta debe mapear a al menos una función NIST o control ISO 42001. |
+| **4. Generación de resultados** | Ver sección 5 (3 Capas de Entrega). |
+
+---
+
+## 5. OUTPUTS AL USUARIO — 3 CAPAS DE ENTREGA
+
+> Arquitectura operativa derivada de `ideas2.txt`, integrada dentro del flujo maestro de `orden.txt`.
+
+---
+
+### CAPA 1 — DIAGNÓSTICO (Auditable, no opinión)
+
+**Objetivo:** Convertir las respuestas del árbol de 20 preguntas en una imagen del estado actual que sea auditable.
+
+| # | Output | Fuente que lo sustenta |
+|---|--------|------------------------|
+| 1.1 | **Perfil y alcance del sistema de IA:** clasificación de la organización según la bifurcación inicial y delimitación del alcance evaluado. Sin esto, la madurez no es comparable entre empresas. | Bifurcación del flujo |
+| 1.2 | **Inventario de casos de uso de IA:** clasificación de riesgo por caso (alto/medio/bajo según impacto en personas y derechos). | Control A.5 de ISO 42001 + función MAP de NIST |
+| 1.3 | **Puntaje de madurez por función NIST:** GOVERN, MAP, MEASURE, MANAGE, con desagregación por subcategoría. Permite un radar de madurez visual. | NIST AI RMF |
+| 1.4 | **Cobertura frente a ISO 42001:** análisis de brecha contra cláusulas 4–10 y controles del Anexo A, indicando estado por control (ausente / parcial / implementado). | ISO 42001 |
+| 1.5 | **Registro de brechas priorizado (gap register):** cada brecha con severidad, control afectado, derecho o riesgo comprometido. | NIST + ISO |
+| 1.6 | **Indicador de verificabilidad por respuesta:** distingue entre lo autodeclarado y lo respaldado por evidencia documental, reflejando el nivel de confianza en el diagnóstico. El usuario puede adjuntar documentos propios (fuentes internas) para elevar el nivel de confianza de "autodeclarado" a "verificado con evidencia". Ver sección 6.3 para el flujo de consentimiento y protección de datos al subir archivos. | Concepto propio "verificable" |
+
+---
+
+### CAPA 2 — RECOMENDACIONES (Hoja de ruta consciente de recursos)
+
+**Objetivo:** Convertir brechas en una hoja de ruta priorizada, crítico para PYMES con capacidad limitada.
+
+| # | Output | Descripción |
+|---|--------|-------------|
+| 2.1 | **Recomendación por brecha** | Cada una con referencia cruzada a la subcategoría NIST y al control ISO que cierra. Una brecha sin control de destino no genera recomendación. |
+| 2.2 | **Priorización por reducción de riesgo vs. esfuerzo/costo** | Matriz o puntaje. Las *quick wins* de bajo costo tienen el mismo peso que las medidas estructurales. |
+| 2.3 | **Justificación normativa y de derechos** | Por qué importa, qué riesgo o derecho fundamental atiende, y qué requisito del marco satisface. La justificación siempre parte de la **Constitución Política del país** como fuente primaria de derechos fundamentales, y luego vincula la normativa estatutaria, los controles ISO y las funciones NIST aplicables. |
+| 2.4 | **Esfuerzo estimado y rol responsable sugerido** | Bajo / medio / alto. Define quién ejecuta considerando que una PYME no tiene CISO (ej. dueño, gerente, equipo de TI externo). |
+| 2.5 | **Secuenciación por fases** | 0–30 días, 30–90 días, estructural. |
+| 2.6 | **Criterio de cierre verificable por recomendación** | Qué evidencia concreta demuestra que la brecha quedó cerrada. Cierra el círculo con el indicador de verificabilidad de la Capa 1. |
+
+#### Sobre el plano cartesiano
+El plano cartesiano de posicionamiento es **contextual y arbitrable** según las necesidades de la PYME evaluada. El sistema sugerirá el más apropiado:
+
+| Contexto de la PYME | Plano sugerido | Eje X | Eje Y |
+|---------------------|----------------|-------|-------|
+| Necesita priorizar acciones rápidas | Quick-win Matrix | Esfuerzo / costo | Reducción de riesgo |
+| Necesita justificar inversión ante directivos | Business Case Map | Capacidad de implementación | Riesgo residual |
+| Necesita cumplimiento regulatorio urgente | Compliance Heatmap | Impacto normativo | Probabilidad de incumplimiento |
+| Necesita alinear al equipo interno | Stakeholder Alignment | Área de la empresa afectada | Nivel de consenso requerido |
+
+> El plano no es único ni fijo. Se genera dinámicamente según el perfil de la organización y las brechas detectadas.
+
+---
+
+### CAPA 3 — EJECUCIÓN (El SaaS produce, no solo aconseja)
+
+**Objetivo:** Generar los artefactos que cierran las brechas detectadas. La calidad de ejecución que evalúan los jueces se hace tangible aquí.
+
+| # | Artefacto generado | Fuente / Control |
+|---|-------------------|------------------|
+| 3.1 | **Plantillas de política prellenadas** con el contexto de la organización: política de IA, uso aceptable, supervisión humana. | ISO 42001 A.2 / cláusula 5.2 |
+| 3.2 | **Registros operativos:** inventario de sistemas de IA, matriz de riesgos, plantilla de evaluación de impacto del sistema de IA. | ISO 42001 A.5 + función MEASURE de NIST |
+| 3.3 | **Procedimientos:** respuesta a incidentes de IA, gobierno de datos, gestión de IA de terceros. | ISO 42001 A.7, A.10 |
+| 3.4 | **Insumos de auditoría:** borrador de Declaración de Aplicabilidad (SoA) de ISO 42001 y lista de verificación con rastro de auditoría. | ISO 42001 (cláusulas 4–10) |
+| 3.5 | **Plan de implementación accionable:** tareas asignables con responsable y fecha, derivadas de la secuenciación de la Capa 2. | Capa 2 output 2.5 |
+| 3.6 | **Constancia verificable:** registro firmado o con sello de tiempo/hash de qué se evaluó, qué se encontró y qué se generó, en un momento determinado. Materialización del adjetivo "verificable". | Concepto propio |
+
+---
+
+## 6. MECANISMOS DE SEGURIDAD Y FEEDBACK
+
+### 6.1 Disclaimer obligatorio (siempre visible)
+> "Esto no reemplaza asesoría legal profesional y no recibimos ni procesamos datos confidenciales."
+
+### 6.2 Reporte de errores de afinación y alucinaciones
+El sistema incluirá un mecanismo explícito para que el usuario reporte:
+- Recomendaciones que no aplican a su contexto.
+- Respuestas del sistema que parecen incorrectas o inventadas.
+- Interpretaciones erróneas de la normativa.
+
+**Formato del reporte:**
+- Campo libre de descripción del error.
+- Captura de la sección afectada.
+- Clasificación del tipo de error: (a) error normativo, (b) alucinación del modelo, (c) desajuste de contexto PYME, (d) otro.
+- Opción de recibir respuesta por correo.
+
+> Este mecanismo refuerza la confianza, permite mejorar el sistema iterativamente y demuestra conciencia de los riesgos de los LLM —alineado con el espíritu del hackathon.
+
+### 6.3 Subida de evidencias y fuentes adicionales por parte del usuario
+
+Para reforzar el **indicador de verificabilidad** (Capa 1.6), el sistema permite al usuario adjuntar documentos o fuentes propias que respalden sus respuestas (políticas internas, contratos, registros, certificados, etc.). Dado que estos documentos pueden contener información sensible, se implementa el siguiente flujo de consentimiento explícito y protección de datos:
+
+**Flujo de subida:**
+1. En el árbol de preguntas, ciertas preguntas ofrecen la opción **"Adjuntar evidencia documental"**.
+2. Al hacer clic, aparece un **popup de consentimiento obligatorio** que el usuario debe aceptar antes de continuar.
+3. Solo tras la aceptación se habilita el campo de carga de archivo.
+4. El sistema extrae únicamente la información estrictamente necesaria para validar la respuesta ante el control ISO o función NIST correspondiente.
+
+**Texto del popup de consentimiento (no se puede omitir):**
+> *"Al subir este documento, declaro que:*
+> *1. Soy plenamente consciente de la información contenida en el archivo que voy a cargar.*
+> *2. En caso de que el documento contenga datos personales o sensibles, cuento con la autorización expresa del titular para su tratamiento conforme a la normativa de protección de datos aplicable en mi jurisdicción **y a los derechos fundamentales reconocidos en la Constitución Política de mi país** (ej. art. 15 y habeas data en Colombia, art. 5 inc. X en Brasil, neuro-derechos en Chile, art. 16 en México, o equivalentes constitucionales locales).*
+> *3. Entiendo que el sistema procesa esta información únicamente para verificar la respuesta proporcionada en el diagnóstico y no la almacenará más allá de la generación del informe sin mi consentimiento expreso adicional.*
+> *4. Asumo la responsabilidad de que la información compartida cumple con las normativas de tratamiento de datos personales vigentes en mi país y sector, así como con los principios y derechos fundamentales establecidos en la Constitución aplicable."*
+
+**Restricciones técnicas y de seguridad:**
+- **Tipos permitidos:** PDF, PNG, JPG, DOCX (sin macros).
+- **Tamaño máximo:** 5 MB por archivo.
+- **No se extrae texto automáticamente** sin confirmación previa del usuario sobre qué sección del documento es relevante.
+- Los documentos se asocian únicamente a la respuesta específica y al informe generado; no se usan para entrenar modelos.
+- La opción de **"No adjuntar"** siempre está disponible. Si el usuario no sube evidencia, el sistema opera con autodeclaración (nivel de confianza: **"bajo"**).
+
+**Principios de tratamiento de datos aplicados:**
+- **Minimización:** solo se solicita y extrae la evidencia estrictamente necesaria para validar el control o función afectada.
+- **Finalidad limitada:** el documento se procesa únicamente para elevar el nivel de verificabilidad de esa respuesta puntual.
+- **Temporalidad:** los archivos se mantienen solo durante la sesión activa y la generación del informe; el usuario puede optar por incluirlos en la **constancia verificable** (Capa 3.6) o eliminarlos al cerrar la sesión.
+- **Jerarquía normativa constitucional:** el tratamiento de cualquier dato personal adjunto respeta los derechos fundamentales reconocidos en la **Constitución Política del país** (intimidad, habeas data, debido proceso, igualdad), la cual opera como norma suprema por encima de leyes y reglamentos locales.
+- **Consistencia con el disclaimer:** aunque el disclaimer general (6.1) indica que no se procesan datos confidenciales, esta funcionalidad es una excepción voluntaria y consiente por parte del usuario, bajo su propia responsabilidad y cumplimiento normativo, incluyendo la Constitución aplicable.
+
+> **Justificación estratégica:** Este flujo no solo protege a la PYME y al titular de los datos, sino que demuestra ante los jueces del hackathon que el sistema integra **gobernanza de datos**, **protección de derechos fundamentales** y **jerarquía normativa constitucional** desde su diseño, alineado con el eje ético y de responsabilidad del proyecto.
+
+---
+
+## 7. VALOR / IMPACTO (para la presentación)
+
+- **Impacto social:** democratizar el acceso a la IA responsable.
+- **Competitividad:** cumplir abre mercados y reduce riesgo.
+- **Contextualización regional (país/sector):** diferenciador frente a frameworks genéricos del Norte Global.
+- **Alineado con el objetivo de la hackathon:** traer al Sur Global al centro de la seguridad de la IA.
+
+---
+
+## 8. PENDIENTES RESUELTOS Y ABIERTOS
+
+### ✅ Resueltos por la fusión
+
+| Pendiente original | Resolución |
+|--------------------|------------|
+| ¿De dónde sacar la metodología de Evaluación de Impacto? | Control A.5 de ISO 42001 + función MAP de NIST. Plantilla generada en Capa 3 output 3.2. |
+| ¿Qué fuente respalda el "mínimo legal"? | Justificación normativa cruzada NIST/ISO en Capa 2 output 2.3 + SoA ISO 42001 en Capa 3 output 3.4. |
+| ¿Variables exactas del plano cartesiano? | Sistema contextual con 4 modos arbitrables según necesidad de la PYME (ver Capa 2). |
+| Número de preguntas | **Máximo 20.** Mantenido como restricción de diseño. |
+| ¿Qué pasa con los derechos fundamentales no codificados en leyes ordinarias? | **Constitución Política de cada país como fuente obligatoria.** Se carga automáticamente según el país seleccionado y se vincula en la justificación normativa (Capa 2.3) y en el popup de consentimiento (6.3). |
+
+### ⏳ Aún abiertos (para construir este fin de semana)
+
+| # | Tarea | Prioridad |
+|---|-------|-----------|
+| 1 | Diagramar el árbol de preguntas completo (ramas 1/2/3). | **ALTA** |
+| 2 | Mapear normativa por país y sector (al menos Colombia para demo). | **ALTA** |
+| 3 | Definir stack técnico y construir MVP funcional. | **ALTA** |
+| 4 | Preparar reporte PDF de investigación (plantilla Apart). | **ALTA** |
+| 5 | Preparar pitch de 3 minutos para showcase domingo 7 PM. | **MEDIA** |
+
+---
+
+## 9. RESUMEN EJECUTIVO DE LA ARQUITECTURA
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  USUARIO (PYME del Sur Global)                              │
+│  Responde árbol de ≤20 preguntas adaptadas                  │
+└──────────────────────┬──────────────────────────────────────┘
+                       │
+         ┌─────────────▼─────────────┐
+         │   CAPA 1 — DIAGNÓSTICO    │  ← Auditable, no opinión
+         │  • Perfil + inventario    │
+         │  • Madurez NIST (radar)   │
+         │  • Brechas ISO 42001      │
+         │  • Gap register           │
+         │  • Verificabilidad        │
+         └─────────────┬─────────────┘
+                       │
+         ┌─────────────▼─────────────┐
+         │ CAPA 2 — RECOMENDACIONES  │  ← Consciente de recursos PYME
+         │  • Recomendación x brecha │
+         │  • Priorización riesgo/   │
+         │    esfuerzo (plano        │
+         │    contextual)            │
+         │  • Justificación normativa│
+         │  • Roles sin CISO         │
+         │  • Secuencia 0-30-90      │
+         │  • Criterio de cierre     │
+         └─────────────┬─────────────┘
+                       │
+         ┌─────────────▼─────────────┐
+         │  CAPA 3 — EJECUCIÓN       │  ← El SaaS produce artefactos
+         │  • Políticas prellenadas  │
+         │  • Registros operativos   │
+         │  • Procedimientos         │
+         │  • Insumos auditoría      │
+         │  • Plan accionable        │
+         │  • Constancia verificable │
+         └───────────────────────────┘
+```
+
+---
+
+*Documento generado a partir de la fusión coherente de `orden.txt` (estructura maestra) y `ideas2.txt` (operacionalización en 3 capas).*
+
+
+

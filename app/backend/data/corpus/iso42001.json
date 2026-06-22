@@ -1,0 +1,72 @@
+[
+  {
+    "id": "iso-A.2.2",
+    "fuente": "ISO/IEC 42001:2023",
+    "referencia": "Anexo A — A.2.2 Política de IA",
+    "referencia_legal": "ISO 42001 A.2.2 / cláusula 5.2",
+    "id_control": "A.2.2",
+    "funcion_nist": "GOVERN",
+    "eje": "LEGAL",
+    "texto": "La organización debe definir, documentar y aprobar por la dirección una política de IA, alineada con la dirección estratégica, que establezca el compromiso con el uso responsable de la IA y sirva de marco para los objetivos. Debe comunicarse y revisarse periódicamente."
+  },
+  {
+    "id": "iso-A.3.2",
+    "fuente": "ISO/IEC 42001:2023",
+    "referencia": "Anexo A — A.3.2 Roles y responsabilidades",
+    "referencia_legal": "ISO 42001 A.3.2 / cláusula 5.3",
+    "id_control": "A.3.2",
+    "funcion_nist": "GOVERN",
+    "eje": "RESPONSABILIDAD",
+    "texto": "Se deben definir y asignar los roles y responsabilidades relevantes para el sistema de gestión de IA, incluyendo quién aprueba, opera y supervisa los sistemas de IA. Adecuado para PYMES: el rol puede recaer en el dueño, gerente o un responsable designado, sin requerir un CISO."
+  },
+  {
+    "id": "iso-A.5.2",
+    "fuente": "ISO/IEC 42001:2023",
+    "referencia": "Anexo A — A.5.2 Evaluación de impacto del sistema de IA",
+    "referencia_legal": "ISO 42001 A.5.2 / cláusula 6.1",
+    "id_control": "A.5.2",
+    "funcion_nist": "MAP",
+    "eje": "ETICO",
+    "texto": "La organización debe evaluar las consecuencias potenciales de sus sistemas de IA para individuos, grupos y la sociedad, incluyendo impactos sobre derechos, salud, seguridad y posibles sesgos. La evaluación de impacto se documenta y se actualiza ante cambios significativos."
+  },
+  {
+    "id": "iso-A.5.4",
+    "fuente": "ISO/IEC 42001:2023",
+    "referencia": "Anexo A — A.5.4 Evaluación de riesgos de IA",
+    "referencia_legal": "ISO 42001 A.5.4 / cláusula 6.1",
+    "id_control": "A.5.4",
+    "funcion_nist": "MEASURE",
+    "eje": "LEGAL",
+    "texto": "Se debe establecer un proceso para identificar, analizar y evaluar los riesgos de los sistemas de IA a lo largo de su ciclo de vida, registrando severidad y tratamiento en una matriz de riesgos."
+  },
+  {
+    "id": "iso-A.7.2",
+    "fuente": "ISO/IEC 42001:2023",
+    "referencia": "Anexo A — A.7.2 Gobernanza de datos",
+    "referencia_legal": "ISO 42001 A.7.2 / cláusula 8.3",
+    "id_control": "A.7.2",
+    "funcion_nist": "MANAGE",
+    "eje": "LEGAL",
+    "texto": "La organización debe gestionar los datos usados en el sistema de IA: origen, calidad, procedencia, preparación y cumplimiento de requisitos legales de privacidad. Se conecta directamente con la Ley 1581/2012 en el contexto colombiano."
+  },
+  {
+    "id": "iso-A.9.2",
+    "fuente": "ISO/IEC 42001:2023",
+    "referencia": "Anexo A — A.9.2 Supervisión humana",
+    "referencia_legal": "ISO 42001 A.9.2 / cláusula 8.4",
+    "id_control": "A.9.2",
+    "funcion_nist": "GOVERN",
+    "eje": "ETICO",
+    "texto": "Se deben implementar medidas para que las personas puedan supervisar el funcionamiento del sistema de IA, comprender sus resultados e intervenir o revertir decisiones cuando sea necesario (human oversight)."
+  },
+  {
+    "id": "iso-A.10.2",
+    "fuente": "ISO/IEC 42001:2023",
+    "referencia": "Anexo A — A.10.2 Proveedores y terceros",
+    "referencia_legal": "ISO 42001 A.10.2 / cláusula 8.1",
+    "id_control": "A.10.2",
+    "funcion_nist": "MANAGE",
+    "eje": "RESPONSABILIDAD",
+    "texto": "Cuando se usan sistemas o componentes de IA de terceros (ej. APIs, modelos preentrenados, software SaaS), la organización debe asegurar que se gestionan los riesgos asociados y que se asignan responsabilidades claras entre las partes."
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "nist-govern",
+    "fuente": "NIST AI RMF 1.0",
+    "referencia": "Función GOVERN",
+    "referencia_legal": "NIST AI RMF, GOVERN",
+    "id_control": null,
+    "funcion_nist": "GOVERN",
+    "eje": "RESPONSABILIDAD",
+    "texto": "GOVERN: cultiva una cultura de gestión de riesgos de IA. Establece políticas, procesos y procedimientos transparentes; define roles, responsabilidades y líneas de autoridad; integra el riesgo de IA en la gobernanza organizacional. Subcategorías clave: GOVERN 1.1 (políticas y procesos documentados), GOVERN 2.1 (roles y responsabilidades definidos), GOVERN 4.1 (cultura de riesgo)."
+  },
+  {
+    "id": "nist-map",
+    "fuente": "NIST AI RMF 1.0",
+    "referencia": "Función MAP",
+    "referencia_legal": "NIST AI RMF, MAP",
+    "id_control": null,
+    "funcion_nist": "MAP",
+    "eje": "ETICO",
+    "texto": "MAP: establece el contexto para enmarcar los riesgos. Documenta casos de uso, propósito, usuarios, beneficiarios e impactos potenciales del sistema de IA. Subcategorías clave: MAP 1.1 (contexto y propósito), MAP 1.6 (impactos en individuos y grupos), MAP 5.1 (impactos potenciales positivos y negativos)."
+  },
+  {
+    "id": "nist-measure",
+    "fuente": "NIST AI RMF 1.0",
+    "referencia": "Función MEASURE",
+    "referencia_legal": "NIST AI RMF, MEASURE",
+    "id_control": null,
+    "funcion_nist": "MEASURE",
+    "eje": "ETICO",
+    "texto": "MEASURE: emplea métodos y métricas para analizar, evaluar y monitorear los riesgos de IA. Evalúa fiabilidad, seguridad, sesgo, transparencia y privacidad. Subcategorías clave: MEASURE 2.1 (métricas definidas), MEASURE 2.11 (evaluación de sesgo e imparcialidad), MEASURE 4.2 (retroalimentación de personas afectadas)."
+  },
+  {
+    "id": "nist-manage",
+    "fuente": "NIST AI RMF 1.0",
+    "referencia": "Función MANAGE",
+    "referencia_legal": "NIST AI RMF, MANAGE",
+    "id_control": null,
+    "funcion_nist": "MANAGE",
+    "eje": "RESPONSABILIDAD",
+    "texto": "MANAGE: prioriza y actúa sobre los riesgos con base en Map y Measure. Asigna recursos, responde a incidentes y monitorea el sistema en operación. Subcategorías clave: MANAGE 1.3 (priorización y respuesta a riesgos), MANAGE 2.3 (mecanismos para gestionar riesgos de terceros), MANAGE 4.1 (monitoreo posterior al despliegue)."
+  }
+]
