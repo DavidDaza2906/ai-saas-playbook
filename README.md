@@ -257,3 +257,16 @@ ai-saas-playbook/
 | [`INFORME_TECNICO.md`](INFORME_TECNICO.md) | Informe técnico (anexo del paper) |
 | [`app/SHOWCASE.md`](app/SHOWCASE.md) | Guion de demostración para jueces |
 | [`ESTADO.md`](ESTADO.md) | Estado del proyecto y TO-DO |
+
+---
+
+## Declaración de uso de LLMs / IA generativa
+
+Durante la elaboración de este proyecto se utilizaron modelos de lenguaje como asistentes de redacción, organización y generación de código, siempre bajo revisión humana del equipo:
+
+- **Gemini:** redacción y sintaxis del paper.
+- **NotebookLM:** administración y cotejo de citas de referencias.
+- **Claude / OpenCode:** generación del prompt de contexto final, construcción del árbol de preguntas basado en ISO 42001 y NIST AI RMF, scaffold del SaaS y diseño del pipeline RAG.
+- **OpenCode API (`glm-5.2`) / `deepseek-v4-flash`:** en runtime, generación de la política de IA a la medida, propuesta de pesos congelados (`propose_weights.py`) y verificador de faithfulness LLM-as-judge.
+
+Todas las salidas fueron verificadas, corregidas y aprobadas por los autores. El motor determinista del diagnóstico no usa LLM.
