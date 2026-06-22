@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Loader2, AlertTriangle, ChevronLeft, ChevronRight, Paperclip } from 'lucide-react'
+import { Loader2, AlertTriangle, ChevronLeft, ChevronRight, Paperclip, X } from 'lucide-react'
 import type { DiagnosePayload } from '../api'
 import { diagnose, getQuestions } from '../api'
 import type { ArbolPreguntas, DiagnoseResponse, Pregunta, Subpregunta, ValorRespuesta } from '../types'
@@ -53,6 +53,7 @@ export function Wizard({ onComplete, onCargarPOC }: {
   const [bifurcacion, setBifurcacion] = useState<string>('')
   const [respuestas, setRespuestas] = useState<Record<string, ValorRespuesta>>({})
   const [evidencias, setEvidencias] = useState<string[]>([])
+  const [nombresEvidencia, setNombresEvidencia] = useState<Record<string, string>>({})
   const [arbol, setArbol] = useState<ArbolPreguntas | null>(null)
   const [cargandoArbol, setCargandoArbol] = useState(true)
   const [errorCarga, setErrorCarga] = useState<string | null>(null)
@@ -93,8 +94,20 @@ export function Wizard({ onComplete, onCargarPOC }: {
     setRespuestas((r) => ({ ...r, [id]: valor }))
   }
 
-  const toggleEvidencia = (id: string) => {
-    setEvidencias((e) => (e.includes(id) ? e.filter((x) => x !== id) : [...e, id]))
+  const adjuntarEvidencia = (id: string, archivo: File | null) => {
+    if (archivo) {
+      setEvidencias((e) => (e.includes(id) ? e : [...e, id]))
+      setNombresEvidencia((n) => ({ ...n, [id]: archivo.name }))
+    }
+  }
+
+  const removerEvidencia = (id: string) => {
+    setEvidencias((e) => e.filter((x) => x !== id))
+    setNombresEvidencia((n) => {
+      const copia = { ...n }
+      delete copia[id]
+      return copia
+    })
   }
 
   const toggleMultipleSeleccion = (id: string, opcion: string, max?: number | null) => {
@@ -286,7 +299,9 @@ export function Wizard({ onComplete, onCargarPOC }: {
           setRespuesta={setRespuesta}
           toggleMultipleSeleccion={toggleMultipleSeleccion}
           evidencias={evidencias}
-          toggleEvidencia={toggleEvidencia}
+          adjuntarEvidencia={adjuntarEvidencia}
+          removerEvidencia={removerEvidencia}
+          nombresEvidencia={nombresEvidencia}
           respondidas={respondidas.length}
           total={totalAplicables}
           onAtras={() => setPaso(1)}
@@ -336,7 +351,9 @@ function PasoArbol({
   setRespuesta,
   toggleMultipleSeleccion,
   evidencias,
-  toggleEvidencia,
+  adjuntarEvidencia,
+  removerEvidencia,
+  nombresEvidencia,
   respondidas,
   total,
   onAtras,
@@ -348,7 +365,9 @@ function PasoArbol({
   setRespuesta: (id: string, v: ValorRespuesta) => void
   toggleMultipleSeleccion: (id: string, opcion: string, max?: number | null) => void
   evidencias: string[]
-  toggleEvidencia: (id: string) => void
+  adjuntarEvidencia: (id: string, archivo: File | null) => void
+  removerEvidencia: (id: string) => void
+  nombresEvidencia: Record<string, string>
   respondidas: number
   total: number
   onAtras: () => void
@@ -380,7 +399,9 @@ function PasoArbol({
           setRespuesta={setRespuesta}
           toggleMultipleSeleccion={toggleMultipleSeleccion}
           tieneEvidencia={evidencias.includes(p.id)}
-          toggleEvidencia={toggleEvidencia}
+          adjuntarEvidencia={adjuntarEvidencia}
+          removerEvidencia={removerEvidencia}
+          nombreEvidencia={nombresEvidencia[p.id]}
         />
       ))}
 
@@ -411,7 +432,9 @@ function PreguntaCard({
   setRespuesta,
   toggleMultipleSeleccion,
   tieneEvidencia,
-  toggleEvidencia,
+  adjuntarEvidencia,
+  removerEvidencia,
+  nombreEvidencia,
 }: {
   pregunta: Pregunta
   index: number
@@ -420,7 +443,9 @@ function PreguntaCard({
   setRespuesta: (id: string, v: ValorRespuesta) => void
   toggleMultipleSeleccion: (id: string, opcion: string, max?: number | null) => void
   tieneEvidencia: boolean
-  toggleEvidencia: (id: string) => void
+  adjuntarEvidencia: (id: string, archivo: File | null) => void
+  removerEvidencia: (id: string) => void
+  nombreEvidencia?: string
 }) {
   const filasMatriz = pregunta.filas_de ? (Number(respuestas[pregunta.filas_de]) || 0) : 0
 
@@ -431,15 +456,31 @@ function PreguntaCard({
           <span className="text-slate-400 mr-1">{index + 1}.</span>
           {pregunta.texto}
         </h3>
-        <label className="flex items-center gap-1.5 text-xs text-slate-500 cursor-pointer shrink-0">
-          <input
-            type="checkbox"
-            checked={tieneEvidencia}
-            onChange={() => toggleEvidencia(pregunta.id)}
-            className="accent-indigo-600"
-          />
-          <Paperclip className="w-3 h-3" /> Evidencia
-        </label>
+        {tieneEvidencia ? (
+          <div className="flex items-center gap-2 shrink-0">
+            <span className="inline-flex items-center gap-1.5 text-xs text-green-700 bg-green-50 rounded-full px-2.5 py-1">
+              <Paperclip className="w-3 h-3" />
+              <span className="max-w-[120px] truncate">{nombreEvidencia || 'Archivo adjunto'}</span>
+            </span>
+            <button
+              onClick={() => removerEvidencia(pregunta.id)}
+              className="text-xs text-slate-400 hover:text-red-500"
+              title="Quitar evidencia"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        ) : (
+          <label className="flex items-center gap-1.5 text-xs text-slate-500 cursor-pointer shrink-0 hover:text-indigo-600 transition-colors">
+            <input
+              type="file"
+              accept=".pdf,.png,.jpg,.jpeg,.docx,.csv,.xlsx"
+              className="hidden"
+              onChange={(e) => adjuntarEvidencia(pregunta.id, e.target.files?.[0] ?? null)}
+            />
+            <Paperclip className="w-3 h-3" /> Adjuntar evidencia
+          </label>
+        )}
       </div>
       {pregunta.contexto_pyme && (
         <p className="text-xs text-slate-500 mb-4">{pregunta.contexto_pyme}</p>
